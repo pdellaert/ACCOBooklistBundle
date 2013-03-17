@@ -13,3 +13,54 @@ html *{
 	margin: 0;
 	padding: 0;
 }
+
+#wrap{}
+
+#top{
+	background: #fff url(../images/bg_top.jpg) no-repeat 0 0;
+}
+
+#top .cont{
+	width: 950px;
+	margin: 0 auto;
+	position: relative;
+	min-height: 150px;
+}
+			
+#top .cont #logo{
+	position: absolute;
+	top: 24px;
+	left: 40px;
+}
+
+#main{
+	width: 950px;
+	margin: 0 auto;
+	padding: 18px 0 10px 0;
+	overflow: hidden;
+	height: 1%;
+}
+
+#footer{}
+	
+#footer .bot{
+	margin: 0 auto;
+	width: 950px;
+	padding: 10px 0;
+	font-size: 0.9em;
+}
+		
+#footer .created{
+	float: right;
+}
+
+/* links
+------------------------------------------------ */
+a{
+	text-decoration: underline;
+	color: #333;
+}
+
+a:hover{
+	text-decoration: none;
+}

@@ -90,6 +90,10 @@
 				<source>courses</source>
 				<target>Courses</target>
 			</trans-unit>
+			<trans-unit id="23">
+				<source>created.by</source>
+				<target>Created by</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

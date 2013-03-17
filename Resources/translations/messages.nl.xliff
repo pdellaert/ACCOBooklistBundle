@@ -90,6 +90,10 @@
 				<source>courses</source>
 				<target>Vakken</target>
 			</trans-unit>
+			<trans-unit id="23">
+				<source>created.by</source>
+				<target>Gecreëerd door</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
