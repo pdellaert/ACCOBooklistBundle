@@ -94,6 +94,10 @@
 				<source>created.by</source>
 				<target>Created by</target>
 			</trans-unit>
+			<trans-unit id="24">
+				<source>literaturelist</source>
+				<target>Literature list</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

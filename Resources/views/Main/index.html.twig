@@ -7,26 +7,34 @@
 {% endblock %}
 
 {% block content %}
+	<h1>{% trans %}literaturelist{% endtrans %}</h1>
 	<form method="POST">
-		<select name="faculty" id="faculties" size="1">
-			<option value="-1">{% trans %}choose.faculty{% endtrans %}</option>
-		</select>
-		<br />
-		<select name="level" id="levels" size="1">
-			<option value="-1">{% trans %}choose.level{% endtrans %}</option>
-		</select>
-		<br />
-		<select name="study" id="studies" size="1">
-			<option value="-1">{% trans %}choose.study{% endtrans %}</option>
-		</select>
-		<br />
-		<select name="program" id="programs" size="1">
-			<option value="-1">{% trans %}choose.program{% endtrans %}</option>
-		</select>
-		<br />
-		<select name="stage" id="stages" size="1">
-			<option value="-1">{% trans %}choose.stage{% endtrans %}</option>
-		</select>
-		<div id="courses"></div>
+		<div class="form-row">
+			<select class="form_dropdown" name="faculty" id="faculties" size="1">
+				<option value="-1">{% trans %}choose.faculty{% endtrans %}</option>
+			</select>
+		</div>
+		<div class="form-row">
+			<select class="form_dropdown"  name="level" id="levels" size="1">
+				<option value="-1">{% trans %}choose.level{% endtrans %}</option>
+			</select>
+		</div>
+		<div class="form-row">
+			<select class="form_dropdown" name="study" id="studies" size="1">
+				<option value="-1">{% trans %}choose.study{% endtrans %}</option>
+			</select>
+		</div>
+		<div class="form-row">
+			<select class="form_dropdown"  name="program" id="programs" size="1">
+				<option value="-1">{% trans %}choose.program{% endtrans %}</option>
+			</select>
+		</div>
+		<div class="form-row">
+			<select class="form_dropdown"  name="stage" id="stages" size="1">
+				<option value="-1">{% trans %}choose.stage{% endtrans %}</option>
+			</select>
+		</div>
 	</form>
+	<div class="hr"> </div>
+	<div id="courses"></div>
 {% endblock %}
