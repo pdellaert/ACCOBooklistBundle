@@ -47,6 +47,7 @@ ul#funcnav li {
 	padding: 0;
 	margin: 0 0 0 10px;
 	float: left;
+	list-style: none;
 }
 	
 ul#funcnav li a {
