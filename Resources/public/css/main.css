@@ -14,26 +14,51 @@ html *{
 	padding: 0;
 }
 
-#wrap{}
+#wrap {}
 
-#top{
+#top {
 	background: #fff url(../images/bg_top.jpg) no-repeat 0 0;
 }
 
-#top .cont{
+#top .cont {
 	width: 950px;
 	margin: 0 auto;
 	position: relative;
 	min-height: 150px;
 }
 			
-#top .cont #logo{
+#top .cont #logo {
 	position: absolute;
 	top: 24px;
 	left: 40px;
 }
 
-#main{
+ul#funcnav {
+	margin: 0;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+ul#funcnav li {
+	background: none;
+	padding: 0;
+	margin: 0 0 0 10px;
+	float: left;
+}
+	
+ul#funcnav li a {
+	color: #333;
+	text-decoration: none;
+}
+	
+ul#funcnav li a:hover {
+	text-decoration: underline;
+}
+
+#main {
 	width: 950px;
 	margin: 0 auto;
 	padding: 18px 0 10px 0;
@@ -41,16 +66,16 @@ html *{
 	height: 1%;
 }
 
-#footer{}
+#footer {}
 	
-#footer .bot{
+#footer .bot {
 	margin: 0 auto;
 	width: 950px;
 	padding: 10px 0;
 	font-size: 0.9em;
 }
 		
-#footer .created{
+#footer .created {
 	float: right;
 }
 
@@ -66,7 +91,7 @@ html *{
 	margin-bottom: 10px;
 }
 
-#content .form-row{
+#content .form-row {
 	margin-bottom: 10px;
 }
 
@@ -84,27 +109,27 @@ html *{
 
 /* links
 ------------------------------------------------ */
-a{
+a {
 	text-decoration: underline;
 	color: #333;
 }
 
-a:hover{
+a:hover {
 	text-decoration: none;
 }
 
 /* typo
 ------------------------------------------------ */
-h1{
+h1 {
 	font-size: 2em;
 	font-weight: normal;
 	color: #004785;
 	margin-bottom: 20px;
 }
 
-h2{}
+h2 {}
 	
-#content h2{
+#content h2 {
 	font-size: 1.8em;
 	font-weight: normal;
 	margin-bottom: 10px;

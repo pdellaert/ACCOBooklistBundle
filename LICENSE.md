@@ -15,6 +15,12 @@ modification, are permitted provided that the following conditions are met:
    names of its contributors may be used to endorse or promote products
    derived from this software without specific prior written permission.
 
+Exception to the permition to redistribute or use in source and binary forms:
+- Images (PNG, JPEG, JPG and/or GIF)
+- CSS (.CSS)
+
+These files are proprietary to Philippe Dellaert and ACCO cvba
+
 THIS SOFTWARE IS PROVIDED BY PHILIPPE DELLAERT ''AS IS'' AND ANY
 EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
