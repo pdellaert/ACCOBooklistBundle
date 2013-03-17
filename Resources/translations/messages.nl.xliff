@@ -98,6 +98,10 @@
 				<source>literaturelist</source>
 				<target>Literatuurlijst</target>
 			</trans-unit>
+			<trans-unit id="25">
+				<source>acco.bookstore</source>
+				<target>ACCO Boekhandel</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
