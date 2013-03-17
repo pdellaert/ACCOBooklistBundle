@@ -1,6 +1,10 @@
 {% extends "DellaertACCOBooklistBundle::layout.html.twig" %}
 
-{% block extrajs %}<script type="text/javascript" src="{{ asset('bundles/dellaertaccobooklist/js/vakkenlijst.js') }}"></script>{% endblock %}
+{% block extrajs %}
+	<script type="text/javascript">
+		{% include 'DellaertACCOBooklistBundle:js:vakkenlijst.js.twig' %}
+	</script>
+{% endblock %}
 
 {% block content %}
 	<form method="POST">
