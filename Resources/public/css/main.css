@@ -55,7 +55,7 @@ html *{
 }
 
 #content {
-	margin: 0 241px 0 163px;
+	margin: 0 30px 0 20px;
 	background: url(../images/bg_cont.png) no-repeat top left;
 	min-height: 451px;
 	padding: 20px 20px 20px 27px;
