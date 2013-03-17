@@ -147,29 +147,27 @@ $(document).ready(function(){
 			$.getJSON('{{ path('dellaert_kul_education_api_list_courses_in_level_noids', {'_locale': app.request.locale}) }}/' + $('#programs').val() + '/' + $(this).val(), function(data) {
 				var html = '';
 
-				if( typeof data.mandatory != 'undefined' ) {
-					var len = data.mandatory.length;
-				} else {
-					var len = 0;
-				}
+				var len = data.length;
 
 				if( len > 0 ) {
-					html += '<b>{% trans %}course.mandatory{% endtrans %}</b><br />'
-						+'<table><tr><td><b>{% trans %}course.id{% endtrans %}</b></td>'
-						+'<td><b>{% trans %}course.title{% endtrans %}</b></td>'
-						+'<td><b>{% trans %}course.period{% endtrans %}</b></td>'
-						+'<td><b>{% trans %}course.studypoints{% endtrans %}</b></td>'
-						+'<td><b>{% trans %}course.teachers{% endtrans %}</b></td></tr>';
+					html += '<b>{% trans %}courses{% endtrans %}</b><br />'
+						+'<table><tr><th><b>{% trans %}course.id{% endtrans %}</b></th>'
+						+'<th><b>{% trans %}course.title{% endtrans %}</b></th>'
+						+'<th><b>{% trans %}course.period{% endtrans %}</b></th>'
+						+'<th><b>{% trans %}course.mandatory{% endtrans %}</b></th>'
+						+'<th><b>{% trans %}course.studypoints{% endtrans %}</b></th>'
+						+'<th><b>{% trans %}course.teachers{% endtrans %}</b></th></tr>';
 
 					for( var i=0; i < len; i++ ) {
-						html += '<tr><td>'+data.mandatory[i].course_id+'</td>'
-							+'<td>'+data.mandatory[i].title+'</td>'
-							+'<td>'+data.mandatory[i].period+'</td>'
-							+'<td>'+data.mandatory[i].studypoints+'</td>'
+						html += '<tr><td>'+data[i].course_id+'</td>'
+							+'<td>'+data[i].title+'</td>'
+							+'<td>'+data[i].period+'</td>'
+							+'<td>'+data[i].mandatory+'</td>'
+							+'<td>'+data[i].studypoints+'</td>'
 							+'<td>';
-						lenteachers = data.mandatory[i].teachers.length;
+						lenteachers = data[i].teachers.length;
 						for( var j=0; j<lenteachers; j++ ) {
-							html += data.mandatory[i].teachers[j].lastname+', '+data.mandatory[i].teachers[j].firstname;
+							html += data[i].teachers[j].name;
 							if( j < lenteachers-1 ) {
 								html += '; ';
 							}
@@ -178,37 +176,6 @@ $(document).ready(function(){
 					}
 
 					html += '</table><br />';
-				}
-
-				if( typeof data.optional != 'undefined' ) {
-					var len = data.optional.length;
-				} else {
-					var len = 0;
-				}
-
-				if( len > 0 ) {
-					html += '<b>{% trans %}course.optional{% endtrans %}</b><br />'
-						+'<table><tr><td><b>{% trans %}course.id{% endtrans %}</b></td>'
-						+'<td><b>{% trans %}course.title{% endtrans %}</b></td>'
-						+'<td><b>{% trans %}course.period{% endtrans %}</b></td>'
-						+'<td><b>{% trans %}course.studypoints{% endtrans %}</b></td>'
-						+'<td><b>{% trans %}course.teachers{% endtrans %}</b></td></tr>';
-
-					for( var i=0; i < len; i++ ) {
-						html += '<tr><td>'+data.optional[i].course_id+'</td>'
-							+'<td>'+data.optional[i].title+'</td>'
-							+'<td>'+data.optional[i].period+'</td>'
-							+'<td>'+data.optional[i].studypoints+'</td>'
-							+'<td>';
-						lenteachers = data.optional[i].teachers.length;
-						for( var j=0; j<lenteachers; j++ ) {
-							html += data.optional[i].teachers[j].lastname+', '+data.optional[i].teachers[j].firstname;
-							if( j < lenteachers-1 ) {
-								html += '; ';
-							}
-						}
-						html += '</td></tr>';
-					}
 				}
 
 				if( html == '' ) {

@@ -60,11 +60,11 @@
 			</trans-unit>
 			<trans-unit id="15">
 				<source>course.mandatory</source>
-				<target>Verplichte vakken</target>
+				<target>Verplicht</target>
 			</trans-unit>
 			<trans-unit id="16">
 				<source>course.optional</source>
-				<target>Keuze vakken</target>
+				<target>Keuze</target>
 			</trans-unit>
 			<trans-unit id="17">
 				<source>course.id</source>
@@ -85,6 +85,10 @@
 			<trans-unit id="21">
 				<source>course.teachers</source>
 				<target>Docenten</target>
+			</trans-unit>
+			<trans-unit id="22">
+				<source>courses</source>
+				<target>Vakken</target>
 			</trans-unit>
 		</body>
 	</file>

@@ -60,11 +60,11 @@
 			</trans-unit>
 			<trans-unit id="15">
 				<source>course.mandatory</source>
-				<target>Mandatory courses</target>
+				<target>Mandatory</target>
 			</trans-unit>
 			<trans-unit id="16">
 				<source>course.optional</source>
-				<target>Optional courses</target>
+				<target>Optional</target>
 			</trans-unit>
 			<trans-unit id="17">
 				<source>course.id</source>
@@ -85,6 +85,10 @@
 			<trans-unit id="21">
 				<source>course.teachers</source>
 				<target>Teachers</target>
+			</trans-unit>
+			<trans-unit id="22">
+				<source>courses</source>
+				<target>Courses</target>
 			</trans-unit>
 		</body>
 	</file>
