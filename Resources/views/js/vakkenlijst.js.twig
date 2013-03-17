@@ -144,7 +144,7 @@ $(document).ready(function(){
 
 	$('#stages').change(function(){				
 		if( $(this).val() != -1 ) {
-			$.getJSON('{{ path('dellaert_kul_education_api_list_courses_noids', {'_locale': app.request.locale}) }}/' + $('#programs').val() + '/' + $(this).val(), function(data) {
+			$.getJSON('{{ path('dellaert_kul_education_api_list_courses_in_level_noids', {'_locale': app.request.locale}) }}/' + $('#programs').val() + '/' + $(this).val(), function(data) {
 				var html = '';
 
 				if( typeof data.mandatory != 'undefined' ) {
