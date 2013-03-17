@@ -22,17 +22,13 @@ $(document).ready(function(){
 
 	$('#faculties').change(function(){
 		$('#courses').hide();
-		var html = '';
-		$('#courses').html(html);
+		$('#courses').html('');
 		$('#stages').hide();
-		var html = '<option value="-1">{% trans %}choose.stage{% endtrans %}</option>';
-		$('#stages').html(html);
+		$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		$('#programs').hide();
-		var html = '<option value="-1">{% trans %}choose.program{% endtrans %}</option>';
-		$('#programs').html(html);
+		$('#programs').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		$('#studies').hide();
-		var html = '<option value="-1">{% trans %}choose.study{% endtrans %}</option>';
-		$('#studies').html(html);
+		$('#studies').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_levels_by_id_title_noid', {'_locale': app.request.locale}) }}/' + $(this).val(), function(data) {
@@ -50,21 +46,17 @@ $(document).ready(function(){
 			$('#levels').show();
 		} else {
 			$('#levels').hide();
-			var html = '<option value="-1">{% trans %}choose.level{% endtrans %}</option>';
-			$('#levels').html(html);
+			$('#levels').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		}
 	});
 
 	$('#levels').change(function(){
 		$('#courses').hide();
-		var html = '';
-		$('#courses').html(html);
+		$('#courses').html('');
 		$('#stages').hide();
-		var html = '<option value="-1">{% trans %}choose.stage{% endtrans %}</option>';
-		$('#stages').html(html);
+		$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		$('#programs').hide();
-		var html = '<option value="-1">{% trans %}choose.program{% endtrans %}</option>';
-		$('#programs').html(html);
+		$('#programs').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_studies_by_id_title_noid', {'_locale': app.request.locale}) }}/' + $('#faculties').val() + '/' + $(this).val(), function(data) {
@@ -82,18 +74,15 @@ $(document).ready(function(){
 			$('#studies').show();
 		} else {
 			$('#studies').hide();
-			var html = '<option value="-1">{% trans %}choose.study{% endtrans %}</option>';
-			$('#studies').html(html);
+			$('#studies').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		}
 	});
 
 	$('#studies').change(function(){
 		$('#courses').hide();
-		var html = '';
-		$('#courses').html(html);
+		$('#courses').html('');
 		$('#stages').hide();
-		var html = '<option value="-1">{% trans %}choose.stage{% endtrans %}</option>';
-		$('#stages').html(html);
+		$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_programs_by_id_title_noid', {'_locale': app.request.locale}) }}/' + $(this).val(), function(data) {
@@ -111,15 +100,13 @@ $(document).ready(function(){
 			$('#programs').show();
 		} else {
 			$('#programs').hide();
-			var html = '<option value="-1">{% trans %}choose.program{% endtrans %}</option>';
-			$('#programs').html(html);
+			$('#programs').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		}
 	});
 
 	$('#programs').change(function(){
 		$('#courses').hide();
-		var html = '';
-		$('#courses').html(html);
+		$('#courses').html('');
 
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_stages_by_id_title_noid', {'_locale': app.request.locale}) }}/' + $(this).val(), function(data) {
@@ -137,8 +124,7 @@ $(document).ready(function(){
 			$('#stages').show();
 		} else {
 			$('#stages').hide();
-			var html = '<option value="-1">{% trans %}choose.stage{% endtrans %}</option>';
-			$('#stages').html(html);
+			$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		}
 	});
 
@@ -189,8 +175,7 @@ $(document).ready(function(){
 			$('#courses').show();
 		} else {
 			$('#courses').hide();
-			var html = '';
-			$('#courses').html(html);
+			$('#courses').html('');
 		}
 	});
 });

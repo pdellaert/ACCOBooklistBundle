@@ -102,6 +102,10 @@
 				<source>acco.bookstore</source>
 				<target>ACCO Bookstore</target>
 			</trans-unit>
+			<trans-unit id="26">
+				<source>patience</source>
+				<target>Wait a moment...</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
