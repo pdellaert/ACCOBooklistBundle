@@ -191,12 +191,13 @@ function handleCourses(data) {
 
 	for( var i=0; i < len; i++ ) {
 
-		html += '<tr><td width="20">'+data[i].studypoints+' {% trans %}studypoints{% endtrans %}</td>'
+		html += '<tr><td width="30">'+data[i].studypoints+' {% trans %}studypoints{% endtrans %}</td>'
 			+'<td>'+data[i].title+'</td>'
 			+'<td width="20">'+data[i].mandatory+'</td>'
 			+'<td width="20">'+data[i].period+'</td>'
 			+'<td width="50">'+data[i].course_id+'</td>'
-			+'<td width="100">';
+			+'<td width="20">';
+		/*
 		lenteachers = data[i].teachers.length;
 		for( var j=0; j<lenteachers; j++ ) {
 			html += data[i].teachers[j].name;
@@ -204,6 +205,7 @@ function handleCourses(data) {
 				html += '; ';
 			}
 		}
+		*/
 		html += '</td></tr>';
 	}
 
