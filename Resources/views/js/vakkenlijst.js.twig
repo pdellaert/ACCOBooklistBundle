@@ -145,10 +145,14 @@ $(document).ready(function(){
 			    		$(this).next('.slidingDiv').slideUp(200);
 			    		$(this).next('.slidingDiv').removeClass('expanded');
 			    		$(this).next('.slidingDiv').addClass('closed');
+			    		$(this).removeClass('expanded');
+			    		$(this).addClass('closed');
 			    	} else {
 			    		$(this).next('.slidingDiv').slideDown(200);
 			    		$(this).next('.slidingDiv').removeClass('closed');
 			    		$(this).next('.slidingDiv').addClass('expanded');
+			    		$(this).removeClass('closed');
+			    		$(this).addClass('expanded');
 			    	}
 			    });
 
@@ -222,7 +226,7 @@ function handleCoursesByGroups(data,level) {
 			html += '<h'+level;
 
 			if( sliding ) {
-				html += ' class="show_hide"';
+				html += ' class="show_hide closed"';
 			}
 
 			html += '>'+fKey+'</h'+level+'>';
