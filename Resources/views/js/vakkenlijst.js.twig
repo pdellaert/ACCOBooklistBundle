@@ -288,7 +288,7 @@ function handleCoursesByGroups(data,level) {
 			html += '">';
 		}
 
-		if( sKey == 'courses' ) {
+		if( fKey == 'courses' ) {
 			html += handleCourses(data[fKey]);
 		} else {
 			html += handleCoursesByGroups(data[fKey],(level+1));
