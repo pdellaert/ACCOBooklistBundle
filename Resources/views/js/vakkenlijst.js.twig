@@ -226,6 +226,10 @@ function handleCoursesByGroups(data,level) {
 			sliding = true;
 		}
 
+		if( level == 1 ) {
+			html += '<p class="expand_collapse_all closed_all">{% trans %}expand.all{% endtrans %}</p>';
+		}
+
 		if( fKey != 'courses' ) {
 			html += '<h'+level;
 
@@ -234,10 +238,6 @@ function handleCoursesByGroups(data,level) {
 			}
 
 			html += '>'+fKey+'</h'+level+'>';
-		}
-		
-		if( level == 1 ) {
-			html += '<p class="expand_collapse_all closed_all">{% trans %}expand.all{% endtrans %}</p>';
 		}
 
 		if( sliding ) {
