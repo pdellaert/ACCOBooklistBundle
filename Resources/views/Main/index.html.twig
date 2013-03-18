@@ -9,39 +9,40 @@
 {% block content %}
 	<h1>{% trans %}literaturelist{% endtrans %}</h1>
 	<h2>{% trans %}legend{% endtrans %}</h2>
-	<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/mandatory.png') }}" alt="{% trans %}course.mandatory{% endtrans %}" title="{% trans %}course.mandatory{% endtrans %}" /> - {% trans %}course.mandatory{% endtrans %} {% trans %}course{% endtrans %}<br />
-	<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/optional.png') }}" alt="{% trans %}course.optional{% endtrans %}" title="{% trans %}course.optional{% endtrans %}" /> - {% trans %}course.optional{% endtrans %} {% trans %}course{% endtrans %}<br />
-	<img src="{{ asset('bundles/dellaertaccobooklist/images/sem1.png') }}" alt="{% trans %}course.sem1{% endtrans %}" title="{% trans %}course.sem1{% endtrans %}" /> - {% trans %}course.sem1{% endtrans %} {% trans %}course{% endtrans %}<br />
-	<img src="{{ asset('bundles/dellaertaccobooklist/images/sem2.png') }}" alt="{% trans %}course.sem2{% endtrans %}" title="{% trans %}course.sem2{% endtrans %}" /> - {% trans %}course.sem2{% endtrans %} {% trans %}course{% endtrans %}<br />
-	<img src="{{ asset('bundles/dellaertaccobooklist/images/sem3.png') }}" alt="{% trans %}course.sem3{% endtrans %}" title="{% trans %}course.sem3{% endtrans %}" /> - {% trans %}course.sem3{% endtrans %} {% trans %}course{% endtrans %}<br />
-	<img src="{{ asset('bundles/dellaertaccobooklist/images/teachers.png') }}" alt="{% trans %}course.teachers{% endtrans %}" title="{% trans %}course.teachers{% endtrans %}" /> - {% trans %}course.teachers{% endtrans %} ({% trans %}teachers.legend{% endtrans %}<br />
-	<form method="POST">
-		<div class="form-row">
-			<select class="form_dropdown" name="faculty" id="faculties" size="1">
-				<option value="-1">{% trans %}patience{% endtrans %}</option>
-			</select>
-		</div>
-		<div class="form-row">
-			<select class="form_dropdown" name="level" id="levels" size="1">
-				<option value="-1">{% trans %}patience{% endtrans %}</option>
-			</select>
-		</div>
-		<div class="form-row">
-			<select class="form_dropdown" name="study" id="studies" size="1">
-				<option value="-1">{% trans %}patience{% endtrans %}</option>
-			</select>
-		</div>
-		<div class="form-row">
-			<select class="form_dropdown" name="program" id="programs" size="1">
-				<option value="-1">{% trans %}patience{% endtrans %}</option>
-			</select>
-		</div>
-		<div class="form-row">
-			<select class="form_dropdown" name="stage" id="stages" size="1">
-				<option value="-1">{% trans %}patience{% endtrans %}</option>
-			</select>
-		</div>
-	</form>
+	<div id="legend">
+		<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/mandatory.png') }}" alt="{% trans %}course.mandatory{% endtrans %}" title="{% trans %}course.mandatory{% endtrans %}" /> - {% trans %}course.mandatory{% endtrans %} {% trans %}course{% endtrans %}<br />
+		<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/optional.png') }}" alt="{% trans %}course.optional{% endtrans %}" title="{% trans %}course.optional{% endtrans %}" /> - {% trans %}course.optional{% endtrans %} {% trans %}course{% endtrans %}<br />
+		<img src="{{ asset('bundles/dellaertaccobooklist/images/sem1.png') }}" alt="{% trans %}course.sem1{% endtrans %}" title="{% trans %}course.sem1{% endtrans %}" /> - {% trans %}course.sem1{% endtrans %} {% trans %}course{% endtrans %}<br />
+		<img src="{{ asset('bundles/dellaertaccobooklist/images/sem2.png') }}" alt="{% trans %}course.sem2{% endtrans %}" title="{% trans %}course.sem2{% endtrans %}" /> - {% trans %}course.sem2{% endtrans %} {% trans %}course{% endtrans %}<br />
+		<img src="{{ asset('bundles/dellaertaccobooklist/images/sem3.png') }}" alt="{% trans %}course.sem3{% endtrans %}" title="{% trans %}course.sem3{% endtrans %}" /> - {% trans %}course.sem3{% endtrans %} {% trans %}course{% endtrans %}<br />
+		<a href="#"> </a> - {% trans %}course.teachers{% endtrans %} ({% trans %}teachers.legend{% endtrans %}<br />
+	</div>
+	<br />
+	<div class="form-row">
+		<select class="form_dropdown" name="faculty" id="faculties" size="1">
+			<option value="-1">{% trans %}patience{% endtrans %}</option>
+		</select>
+	</div>
+	<div class="form-row">
+		<select class="form_dropdown" name="level" id="levels" size="1">
+			<option value="-1">{% trans %}patience{% endtrans %}</option>
+		</select>
+	</div>
+	<div class="form-row">
+		<select class="form_dropdown" name="study" id="studies" size="1">
+			<option value="-1">{% trans %}patience{% endtrans %}</option>
+		</select>
+	</div>
+	<div class="form-row">
+		<select class="form_dropdown" name="program" id="programs" size="1">
+			<option value="-1">{% trans %}patience{% endtrans %}</option>
+		</select>
+	</div>
+	<div class="form-row">
+		<select class="form_dropdown" name="stage" id="stages" size="1">
+			<option value="-1">{% trans %}patience{% endtrans %}</option>
+		</select>
+	</div>
 	<div class="hr"> </div>
 	<div id="courses"></div>
 {% endblock %}

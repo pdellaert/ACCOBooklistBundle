@@ -189,7 +189,7 @@ h6 {
 	vertical-align: middle;
 }
 
-#courses td.icon a {
+#courses td.icon a, #legend a.icon {
 	height: 11px;
 	width: 19px;
 	background: url(../images/teachers.png);
@@ -198,7 +198,7 @@ h6 {
 	display: block;
 }
 
-#courses td.icon a:hover, #courses td.icon a:focus {
+#courses td.icon a:hover, #courses td.icon a:focus, #legend a.icon:hover, #legend a.icon:focus {
 	background-position: 0 -11px;
 }
 
@@ -230,4 +230,5 @@ h6 {
 	border-radius: 10px;
 	background-color: #005095;
 	width: 100px;
+	border: #fff 1px;
 }
