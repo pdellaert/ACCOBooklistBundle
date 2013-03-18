@@ -202,13 +202,13 @@ function handleCourses(data) {
 			html +='</td>'
 			+'<td width="20">';
 			switch(data[i].period) {
-				case 1:
+				case '1':
 					html += '<img src="{{ asset('bundles/dellaertaccobooklist/images/sem1.png') }}" alt="{% trans %}course.sem1{% endtrans %}" title="{% trans %}course.sem1{% endtrans %}" />';
 					break;
-				case 2:
+				case '2':
 					html += '<img src="{{ asset('bundles/dellaertaccobooklist/images/sem2.png') }}" alt="{% trans %}course.sem2{% endtrans %}" title="{% trans %}course.sem2{% endtrans %}" />';
 					break;
-				case 3:
+				case '3':
 					html += '<img src="{{ asset('bundles/dellaertaccobooklist/images/sem3.png') }}" alt="{% trans %}course.sem3{% endtrans %}" title="{% trans %}course.sem3{% endtrans %}" />';
 					break;
 			}
