@@ -178,24 +178,4 @@ $(document).ready(function(){
 			$('#courses').html('');
 		}
 	});
-
-	$("#coursestest").accordion({
-		objID: "#coursesaccordion", 
-		obj: "div", 
-		wrapper: "div", 
-		el: ".h", 
-		head: "h2, h3, h4, h5", 
-		next: "div", 
-		initShow : "div.shown",
-		standardExpansible : true,
-		showSpeed: 200,
-		hideSpeed: 100
-	});
-
-	$("#coursestest .accordion").expandAll({
-		ref: "h2", 
-		speed: 200,
-		oneSwitch : true,
-		instantHide: false
-	});
 });
