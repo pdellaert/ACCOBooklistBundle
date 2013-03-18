@@ -184,47 +184,7 @@ $(document).ready(function(){
 			$.getJSON('{{ path('dellaert_kul_education_api_list_courses_by_groups_in_level_noids', {'_locale': app.request.locale}) }}/' + $('#programs').val() + '/' + $(this).val(), function(data) {
 				var html = '';
 
-				//Assuming 1 root element:
-				for( fKey in data ) {
-					html += '<h1>'+fKey+'</h1>'
-					console.log('found: '+fKey+'-'+data[fKey]);
-					for( sKey in data[fKey] ) {
-						console.log('found: '+sKey+'-'+data[fKey][sKey]);
-						if( sKey == 'courses' ) {
-							var len = data[fKey][sKey].length;
-							console.log(len);
-
-							html += '<b>{% trans %}courses{% endtrans %}</b><br />'
-								+'<table><tr><th><b>{% trans %}course.id{% endtrans %}</b></th>'
-								+'<th><b>{% trans %}course.title{% endtrans %}</b></th>'
-								+'<th><b>{% trans %}course.period{% endtrans %}</b></th>'
-								+'<th><b>{% trans %}course.mandatory{% endtrans %}</b></th>'
-								+'<th><b>{% trans %}course.studypoints{% endtrans %}</b></th>'
-								+'<th><b>{% trans %}course.teachers{% endtrans %}</b></th></tr>';
-
-							for( var i=0; i < len; i++ ) {
-								html += '<tr><td>'+data[fKey][sKey][i].course_id+'</td>'
-									+'<td>'+data[fKey][sKey][i].title+'</td>'
-									+'<td>'+data[fKey][sKey][i].period+'</td>'
-									+'<td>'+data[fKey][sKey][i].mandatory+'</td>'
-									+'<td>'+data[fKey][sKey][i].studypoints+'</td>'
-									+'<td>';
-								lenteachers = data[fKey][sKey][i].teachers.length;
-								for( var j=0; j<lenteachers; j++ ) {
-									html += data[fKey][sKey][i].teachers[j].name;
-									if( j < lenteachers-1 ) {
-										html += '; ';
-									}
-								}
-								html += '</td></tr>';
-							}
-
-							html += '</table><br />';
-						} else {
-							// HANDLE OFF TO SEPERATE RECURSIVE FUNCTION
-						}
-					}
-				}
+				html = handleCoursesByGroups(data,1);
 
 				if( html == '' ) {
 					html = '{% trans %}no.course{% endtrans %}';
@@ -232,6 +192,7 @@ $(document).ready(function(){
 
 				$('#courses').html(html);
 			});
+			$('#courses').slideDown(200);
 		} else {
 			$('#courses').hide();
 			$('#courses').html('');
@@ -266,3 +227,77 @@ $(document).ready(function(){
     	}
     });
 });
+
+function handleCourses(data) {
+	var len = data.length;
+	var html = '';
+
+	html += '<b>{% trans %}courses{% endtrans %}</b><br />'
+		+'<table><tr><th><b>{% trans %}course.id{% endtrans %}</b></th>'
+		+'<th><b>{% trans %}course.title{% endtrans %}</b></th>'
+		+'<th><b>{% trans %}course.period{% endtrans %}</b></th>'
+		+'<th><b>{% trans %}course.mandatory{% endtrans %}</b></th>'
+		+'<th><b>{% trans %}course.studypoints{% endtrans %}</b></th>'
+		+'<th><b>{% trans %}course.teachers{% endtrans %}</b></th></tr>';
+
+	for( var i=0; i < len; i++ ) {
+		html += '<tr><td>'+data[i].course_id+'</td>'
+			+'<td>'+data[i].title+'</td>'
+			+'<td>'+data[i].period+'</td>'
+			+'<td>'+data[i].mandatory+'</td>'
+			+'<td>'+data[i].studypoints+'</td>'
+			+'<td>';
+		lenteachers = data[i].teachers.length;
+		for( var j=0; j<lenteachers; j++ ) {
+			html += data[i].teachers[j].name;
+			if( j < lenteachers-1 ) {
+				html += '; ';
+			}
+		}
+		html += '</td></tr>';
+	}
+
+	html += '</table><br />';
+
+	return html;
+}
+
+function handleCoursesByGroups(data,level) {
+	var html = '';
+
+	var sliding = false;
+	if ( level > 1 ) {
+		sliding = true;
+	}
+
+	for( fKey in data ) {
+		html += '<h'+level;
+		if( sliding ) {
+			html += ' class="show_hide"';
+		}
+		html += '>'+fKey+'</h'+level+'>';
+		if( !sliding ) {
+			html += '<p class="expand_collapse_all">TOGGLE</p>';
+		}
+
+		if( sliding ) {
+			html += '<div class="slidingDiv';
+			if( level > 2 ) {
+				html += ' level';
+			}
+			html += '">';
+		}
+		for( sKey in data[fKey] ) {
+			if( sKey == 'courses' ) {
+				html += handleCourses(data[fKey][sKey]);
+			} else {
+				html += handleCoursesByGroups(data[fKey][sKey],(level+1));
+			}
+		}
+		if( sliding ) {
+			html += '</div>'
+		}
+	}
+
+	return html;
+}
