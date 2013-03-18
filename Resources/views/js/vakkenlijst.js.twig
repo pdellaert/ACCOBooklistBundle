@@ -187,15 +187,17 @@ $(document).ready(function(){
 		head: "h2, h3, h4, h5", 
 		next: "div", 
 		initShow : "div.shown",
-		standardExpansible : true
+		standardExpansible : true,
+		showSpeed: 200,
+		hideSpeed: 100
 	});
 
 	$("#coursestest .accordion").expandAll({
 		trigger: ".h", 
-		ref: "h2 .h", 
+		ref: "h2.h", 
 		cllpsEl : "div.outer",
 		speed: 200,
 		oneSwitch : true,
-		instantHide: true
+		instantHide: false
 	});
 });
