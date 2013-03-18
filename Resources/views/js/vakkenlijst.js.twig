@@ -272,11 +272,20 @@ function handleCoursesByGroups(data,level) {
 
 	for( fKey in data ) {
 		html += '<h'+level;
+
+		if( fKey == 'courses' ) {
+			sliding = false;
+		}
+
 		if( sliding ) {
 			html += ' class="show_hide"';
 		}
-		html += '>'+fKey+'</h'+level+'>';
-		if( !sliding ) {
+		if( fKey == 'courses' ) {
+			html += '>{% trans %}courses{% endtrans% }</h'+level+'>';
+		} else {
+			html += '>'+fKey+'</h'+level+'>';
+		}
+		if( !sliding && fKey != 'courses' ) {
 			html += '<p class="expand_collapse_all">TOGGLE</p>';
 		}
 
