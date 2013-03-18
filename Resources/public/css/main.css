@@ -135,3 +135,43 @@ h2 {}
 	font-weight: normal;
 	margin-bottom: 10px;
 }
+
+/* Accordion configuration
+------------------------------------------------ */
+
+#coursestest .accordion { 
+	visibility: hidden;
+}
+
+.accordion {
+	margin:0;
+	padding:0 10px;
+}
+
+.accordion .outer {
+	border:1px solid #dadada;
+	border-width:0 1px 1px;
+	background: #fff;
+}
+
+.accordion .inner {
+	margin-bottom:0;
+	padding:.5em 20px 1em;
+	overflow:hidden;
+}
+
+.accordion .inner .inner {
+	padding-bottom:0;
+}
+
+.accordion .h {
+	adding-top:.3em;
+}
+
+.accordion p {
+	margin:.5em 0 1em;
+}
+
+.switch {
+	margin-bottom:.5em;
+}
