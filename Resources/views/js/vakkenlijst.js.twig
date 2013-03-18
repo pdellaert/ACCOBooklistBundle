@@ -193,7 +193,13 @@ function handleCourses(data) {
 
 		html += '<tr><td width="30">'+data[i].studypoints+' {% trans %}studypoints{% endtrans %}</td>'
 			+'<td>'+data[i].title+'</td>'
-			+'<td width="20">'+data[i].mandatory+'</td>'
+			+'<td width="20">';
+			if( data[i].mandatory == 'J' ) {
+				html += '<img src="{{ asset(\'bundles/dellaertaccobooklist/images/mandatory.png\') }}" alt="mandatory" />';
+			} else {
+				html += '<img src="{{ asset(\'bundles/dellaertaccobooklist/images/optional.png\') }}" alt="optional" />';
+			}
+			html +='</td>'
 			+'<td width="20">'+data[i].period+'</td>'
 			+'<td width="50">'+data[i].course_id+'</td>'
 			+'<td width="20" class="teahcers"><a href="#"> </a>;
