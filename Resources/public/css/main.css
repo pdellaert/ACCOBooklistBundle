@@ -163,8 +163,9 @@ h6 {
 /* Courses
 ------------------------------------------------ */
 #courses h2, h3, h4, h5, h6 {
+	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
-	borde-radius: 10px;
+	border-radius: 10px;
 	background-color: #005095;
 	color: #FFF;
 	padding-left: 33px;
@@ -177,7 +178,7 @@ h6 {
 }
 
 #courses h2.expanded, h3.expanded, h4.expanded, h5.expanded, h6.expanded {
-	background: #005095 url(../images/head-closed.png) no-repeat left center;
+	background: #005095 url(../images/head-open.png) no-repeat left center;
 }
 
 /* Sliding stuff
