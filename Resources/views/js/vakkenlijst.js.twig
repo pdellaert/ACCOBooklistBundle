@@ -218,18 +218,15 @@ function handleCoursesByGroups(data,level) {
 			sliding = true;
 		}
 
-		html += '<h'+level;
+		if( fKey != 'courses' ) {
+			html += '<h'+level;
 
-		if( sliding ) {
-			html += ' class="show_hide"';
-		}
+			if( sliding ) {
+				html += ' class="show_hide"';
+			}
 
-		if( fKey == 'courses' ) {
-			html += '>{% trans %}courses{% endtrans %}</h'+level+'>';
-		} else {
 			html += '>'+fKey+'</h'+level+'>';
 		}
-
 		if( level == 1 ) {
 			html += '<p class="expand_collapse_all">{% trans %}expand.all{% endtrans %}</p>';
 		}
