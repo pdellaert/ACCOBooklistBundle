@@ -187,20 +187,16 @@ function handleCourses(data) {
 	var len = data.length;
 	var html = '';
 
-	html += '<table><tr><th><b>{% trans %}course.id{% endtrans %}</b></th>'
-		+'<th><b>{% trans %}course.title{% endtrans %}</b></th>'
-		+'<th><b>{% trans %}course.period{% endtrans %}</b></th>'
-		+'<th><b>{% trans %}course.mandatory{% endtrans %}</b></th>'
-		+'<th><b>{% trans %}course.studypoints{% endtrans %}</b></th>'
-		+'<th><b>{% trans %}course.teachers{% endtrans %}</b></th></tr>';
+	html += '<table>';
 
 	for( var i=0; i < len; i++ ) {
-		html += '<tr><td>'+data[i].course_id+'</td>'
-			+'<td>'+data[i].title+'</td>'
-			+'<td>'+data[i].period+'</td>'
-			+'<td>'+data[i].mandatory+'</td>'
-			+'<td>'+data[i].studypoints+'</td>'
-			+'<td>';
+
+		html += '<tr><td width="20">'+data[i].studypoints+' {% trans %}course.studypoints{% endtrans %}</td>'
+			+'<td>'+data[i].title+' {% trans %}course.studypoints{% endtrans %}</td>'
+			+'<td width="20">'+data[i].mandatory+'</td>'
+			+'<td width="20">'+data[i].period+'</td>'
+			+'<td width="100">'+data[i].course_id+'</td>'
+			+'<td width="100">';
 		lenteachers = data[i].teachers.length;
 		for( var j=0; j<lenteachers; j++ ) {
 			html += data[i].teachers[j].name;
