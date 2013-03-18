@@ -180,7 +180,17 @@ $(document).ready(function(){
 	});
 
     $('.show_hide').click(function(){
-		$(this).next('.slidingDiv').slideToggle();
+		$(this).next('.slidingDiv').slideToggle(200);
 		return false;
+    });
+
+    $('.expand_collapse_all').click(function(){
+    	if( $(this).hasClass("expanded_all") ) {
+    		$('.slidingDiv').slideUp(200);
+    		$(this).removeClass("expanded_all");
+    	} else {
+    		$('.slidingDiv').slideDown(200);
+    		$(this).addClass("expanded_all");
+    	}
     });
 });
