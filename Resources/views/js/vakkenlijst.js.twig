@@ -235,8 +235,9 @@ function handleCoursesByGroups(data,level) {
 
 			html += '>'+fKey+'</h'+level+'>';
 		}
+		
 		if( level == 1 ) {
-			html += '<p class="expand_collapse_all closed_all">{% trans %}expand.all{% endtrans %}</p><br />';
+			html += '<p class="expand_collapse_all closed_all">{% trans %}expand.all{% endtrans %}</p>';
 		}
 
 		if( sliding ) {

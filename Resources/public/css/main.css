@@ -129,20 +129,20 @@ h1 {
 }
 
 h2, h3, h4 {
-	font-size: 1.2em;
 	font-weight: normal;
+	font-size: 1.2em;
 	margin-bottom: 10px;
 }
 
 h5 {
-	font-size: 1em;
 	font-weight: normal;
+	font-size: 1em;
 	margin-bottom: 10px;
 }
 
 h6 {
-	font-size: 0.8em;
 	font-weight: normal;
+	font-size: 0.8em;
 	margin-bottom: 10px;
 }
 
@@ -157,6 +157,7 @@ h6 {
 	padding-left: 33px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	padding-right: 10px;
 }
 
 #courses h2.closed, h3.closed, h4.closed, h5.closed, h6.closed, p.closed_all {
@@ -180,4 +181,5 @@ h6 {
 
 .expand_collapse_all {
 	float: right;
+	margin-bottom: 10px;
 }
