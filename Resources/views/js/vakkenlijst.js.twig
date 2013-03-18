@@ -159,12 +159,14 @@ $(document).ready(function(){
 			    		$('.slidingDiv').addClass('closed');
 			    		$(this).removeClass('expanded_all');
 			    		$(this).addClass('closed_all');
+			    		$(this).html('{% trans %}expand.all{% endtrans %}');
 			    	} else {
 			    		$('.slidingDiv').slideDown(200);
 			    		$('.slidingDiv').removeClass('closed');
 			    		$('.slidingDiv').addClass('expanded');
 			    		$(this).removeClass('closed_all');
 			    		$(this).addClass('expanded_all');
+			    		$(this).html('{% trans %}close.all{% endtrans %}');
 			    	}
 			    });
 			});

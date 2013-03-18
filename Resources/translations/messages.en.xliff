@@ -106,6 +106,14 @@
 				<source>patience</source>
 				<target>Wait a moment...</target>
 			</trans-unit>
+			<trans-unit id="27">
+				<source>expand.all</source>
+				<target>Expand all</target>
+			</trans-unit>
+			<trans-unit id="28">
+				<source>close.all</source>
+				<target>Close all</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
