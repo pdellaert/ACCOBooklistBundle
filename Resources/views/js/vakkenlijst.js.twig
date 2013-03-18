@@ -210,13 +210,10 @@ function handleCoursesByGroups(data,level) {
 	var html = '';
 
 	var sliding = false;
-	if ( level > 1 ) {
-		sliding = true;
-	}
 
 	for( fKey in data ) {
-		if( fKey == 'courses' ) {
-			sliding = false;
+		if ( level > 1 && fKey != 'courses' ) {
+			sliding = true;
 		}
 
 		html += '<h'+level;
@@ -230,7 +227,7 @@ function handleCoursesByGroups(data,level) {
 		} else {
 			html += '>'+fKey+'</h'+level+'>';
 		}
-		
+
 		if( level == 1 ) {
 			html += '<p class="expand_collapse_all">TOGGLE</p>';
 		}
@@ -241,7 +238,7 @@ function handleCoursesByGroups(data,level) {
 				html += ' level';
 			}
 			html += '">';
-		}
+		} 
 
 		if( fKey == 'courses' ) {
 			html += handleCourses(data[fKey]);
