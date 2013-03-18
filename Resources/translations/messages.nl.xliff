@@ -60,11 +60,11 @@
 			</trans-unit>
 			<trans-unit id="15">
 				<source>course.mandatory</source>
-				<target>Verplicht</target>
+				<target>Verplicht vak</target>
 			</trans-unit>
 			<trans-unit id="16">
 				<source>course.optional</source>
-				<target>Keuze</target>
+				<target>Keuzevak</target>
 			</trans-unit>
 			<trans-unit id="17">
 				<source>course.id</source>
@@ -113,6 +113,18 @@
 			<trans-unit id="28">
 				<source>close.all</source>
 				<target>Sluit alles</target>
+			</trans-unit>
+			<trans-unit id="29">
+				<source>course.sem1</source>
+				<target>Eerste semester</target>
+			</trans-unit>
+			<trans-unit id="30">
+				<source>course.sem2</source>
+				<target>Tweede semester</target>
+			</trans-unit>
+			<trans-unit id="31">
+				<source>course.sem3</source>
+				<target>Eerste en tweede semester</target>
 			</trans-unit>
 		</body>
 	</file>

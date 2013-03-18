@@ -195,12 +195,24 @@ function handleCourses(data) {
 			+'<td>'+data[i].title+'</td>'
 			+'<td width="20">';
 			if( data[i].mandatory == 'J' ) {
-				html += '<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/mandatory.png') }}" alt="mandatory" />';
+				html += '<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/mandatory.png') }}" alt="{% trans %}course.mandatory{% endtrans %}" title="{% trans %}course.mandatory{% endtrans %}" />';
 			} else {
-				html += '<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/optional.png') }}" alt="optional" />';
+				html += '<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/optional.png') }}" alt="{% trans %}course.optional{% endtrans %}" title="{% trans %}course.optional{% endtrans %}" />';
 			}
 			html +='</td>'
-			+'<td width="20">'+data[i].period+'</td>'
+			+'<td width="20">';
+			switch(data[i].period {
+				case 1:
+					html += '<img src="{{ asset('bundles/dellaertaccobooklist/images/sem1.png') }}" alt="{% trans %}course.sem1{% endtrans %}" title="{% trans %}course.sem1{% endtrans %}" />';
+					break;
+				case 2:
+					html += '<img src="{{ asset('bundles/dellaertaccobooklist/images/sem2.png') }}" alt="{% trans %}course.sem2{% endtrans %}" title="{% trans %}course.sem2{% endtrans %}" />';
+					break;
+				case 3:
+					html += '<img src="{{ asset('bundles/dellaertaccobooklist/images/sem3.png') }}" alt="{% trans %}course.sem3{% endtrans %}" title="{% trans %}course.sem3{% endtrans %}" />';
+					break;
+			}
+			html += '</td>'
 			+'<td width="50">'+data[i].course_id+'</td>'
 			+'<td width="20" class="teachers"><a href="#"> </a>';
 		/*

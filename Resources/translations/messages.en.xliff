@@ -60,11 +60,11 @@
 			</trans-unit>
 			<trans-unit id="15">
 				<source>course.mandatory</source>
-				<target>Mandatory</target>
+				<target>Mandatory course</target>
 			</trans-unit>
 			<trans-unit id="16">
 				<source>course.optional</source>
-				<target>Optional</target>
+				<target>Optional course</target>
 			</trans-unit>
 			<trans-unit id="17">
 				<source>course.id</source>
@@ -113,6 +113,18 @@
 			<trans-unit id="28">
 				<source>close.all</source>
 				<target>Close all</target>
+			</trans-unit>
+			<trans-unit id="29">
+				<source>course.sem1</source>
+				<target>First term</target>
+			</trans-unit>
+			<trans-unit id="30">
+				<source>course.sem2</source>
+				<target>Second term</target>
+			</trans-unit>
+			<trans-unit id="31">
+				<source>course.sem3</source>
+				<target>First and second term</target>
 			</trans-unit>
 		</body>
 	</file>
