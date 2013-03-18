@@ -184,6 +184,24 @@ h6 {
 	vertical-align: top;
 }
 
+#courses td.teachers {
+	text-align: center;
+	vertical-align: middle;
+}
+
+#courses td.teachers a {
+	height: 11px;
+	width: 19px;
+	background: url(../images/teachers.png);
+	background-position: 0 0;
+	cursor: default;
+	display: block;
+}
+
+#courses td.teachers a:hover, #courses td.teachers a:focus {
+	background-position: 0 -11px;
+}
+
 /* Sliding stuff
 ------------------------------------------------ */
 .slidingDiv {
