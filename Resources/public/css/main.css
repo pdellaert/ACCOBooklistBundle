@@ -128,22 +128,8 @@ h1 {
 	margin-bottom: 20px;
 }
 
-h2 {}
-	
-h2 {
-	font-size: 1.6em;
-	font-weight: normal;
-	margin-bottom: 10px;
-}
-	
-h3 {
-	font-size: 1.4em;
-	font-weight: normal;
-	margin-bottom: 10px;
-}
-
-h4 {
-	font-size: 1.3em;
+h2, h3, h4 {
+	font-size: 1.2em;
 	font-weight: normal;
 	margin-bottom: 10px;
 }
@@ -162,7 +148,7 @@ h6 {
 
 /* Courses
 ------------------------------------------------ */
-#courses h2, h3, h4, h5, h6 {
+#courses h2, h3, h4, h5, h6, p.expand_collapse_all {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -173,11 +159,11 @@ h6 {
 	padding-bottom: 5px;
 }
 
-#courses h2.closed, h3.closed, h4.closed, h5.closed, h6.closed {
+#courses h2.closed, h3.closed, h4.closed, h5.closed, h6.closed, p.closed_all {
 	background: #005095 url(../images/head-closed.png) no-repeat left center;
 }
 
-#courses h2.expanded, h3.expanded, h4.expanded, h5.expanded, h6.expanded {
+#courses h2.expanded, h3.expanded, h4.expanded, h5.expanded, h6.expanded, p.expanded_all {
 	background: #005095 url(../images/head-open.png) no-repeat left center;
 }
 
