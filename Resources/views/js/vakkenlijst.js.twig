@@ -203,15 +203,15 @@ $(document).ready(function(){
 								+'<th><b>{% trans %}course.teachers{% endtrans %}</b></th></tr>';
 
 							for( var i=0; i < len; i++ ) {
-								html += '<tr><td>'+data[i].course_id+'</td>'
-									+'<td>'+data[i].title+'</td>'
-									+'<td>'+data[i].period+'</td>'
-									+'<td>'+data[i].mandatory+'</td>'
-									+'<td>'+data[i].studypoints+'</td>'
+								html += '<tr><td>'+data[fKey][sKey][i].course_id+'</td>'
+									+'<td>'+data[fKey][sKey][i].title+'</td>'
+									+'<td>'+data[fKey][sKey][i].period+'</td>'
+									+'<td>'+data[fKey][sKey][i].mandatory+'</td>'
+									+'<td>'+data[fKey][sKey][i].studypoints+'</td>'
 									+'<td>';
-								lenteachers = data[i].teachers.length;
+								lenteachers = data[fKey][sKey][i].teachers.length;
 								for( var j=0; j<lenteachers; j++ ) {
-									html += data[i].teachers[j].name;
+									html += data[fKey][sKey][i].teachers[j].name;
 									if( j < lenteachers-1 ) {
 										html += '; ';
 									}
