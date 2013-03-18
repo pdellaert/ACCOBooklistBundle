@@ -229,5 +229,5 @@ h6 {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	background-color: #005095;
-	width: 100px;
+	max-width: 200px;
 }
