@@ -191,6 +191,34 @@ $(document).ready(function(){
 				}
 
 				$('#courses').html(html);
+
+			    $('.show_hide').click(function(){
+			    	if( $(this).next('.slidingDiv').hasClass('expanded') ) {
+			    		$(this).next('.slidingDiv').slideUp(200);
+			    		$(this).next('.slidingDiv').removeClass('expanded');
+			    		$(this).next('.slidingDiv').addClass('closed');
+			    	} else {
+			    		$(this).next('.slidingDiv').slideDown(200);
+			    		$(this).next('.slidingDiv').removeClass('closed');
+			    		$(this).next('.slidingDiv').addClass('expanded');
+			    	}
+			    });
+
+			    $('.expand_collapse_all').click(function(){
+			    	if( $(this).hasClass('expanded_all') ) {
+			    		$('.slidingDiv').slideUp(200);
+			    		$('.slidingDiv').removeClass('expanded');
+			    		$('.slidingDiv').addClass('closed');
+			    		$(this).removeClass('expanded_all');
+			    		$(this).addClass('closed_all');
+			    	} else {
+			    		$('.slidingDiv').slideDown(200);
+			    		$('.slidingDiv').removeClass('closed');
+			    		$('.slidingDiv').addClass('expanded');
+			    		$(this).removeClass('closed_all');
+			    		$(this).addClass('expanded_all');
+			    	}
+			    });
 			});
 			$('#courses').slideDown(200);
 		} else {
@@ -198,42 +226,13 @@ $(document).ready(function(){
 			$('#courses').html('');
 		}
 	});
-
-    $('.show_hide').click(function(){
-    	if( $(this).next('.slidingDiv').hasClass('expanded') ) {
-    		$(this).next('.slidingDiv').slideUp(200);
-    		$(this).next('.slidingDiv').removeClass('expanded');
-    		$(this).next('.slidingDiv').addClass('closed');
-    	} else {
-    		$(this).next('.slidingDiv').slideDown(200);
-    		$(this).next('.slidingDiv').removeClass('closed');
-    		$(this).next('.slidingDiv').addClass('expanded');
-    	}
-    });
-
-    $('.expand_collapse_all').click(function(){
-    	if( $(this).hasClass('expanded_all') ) {
-    		$('.slidingDiv').slideUp(200);
-    		$('.slidingDiv').removeClass('expanded');
-    		$('.slidingDiv').addClass('closed');
-    		$(this).removeClass('expanded_all');
-    		$(this).addClass('closed_all');
-    	} else {
-    		$('.slidingDiv').slideDown(200);
-    		$('.slidingDiv').removeClass('closed');
-    		$('.slidingDiv').addClass('expanded');
-    		$(this).removeClass('closed_all');
-    		$(this).addClass('expanded_all');
-    	}
-    });
 });
 
 function handleCourses(data) {
 	var len = data.length;
 	var html = '';
 
-	html += '<b>{% trans %}courses{% endtrans %}</b><br />'
-		+'<table><tr><th><b>{% trans %}course.id{% endtrans %}</b></th>'
+	html += '<table><tr><th><b>{% trans %}course.id{% endtrans %}</b></th>'
 		+'<th><b>{% trans %}course.title{% endtrans %}</b></th>'
 		+'<th><b>{% trans %}course.period{% endtrans %}</b></th>'
 		+'<th><b>{% trans %}course.mandatory{% endtrans %}</b></th>'
