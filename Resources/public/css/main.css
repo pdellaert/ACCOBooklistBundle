@@ -135,3 +135,14 @@ h2 {}
 	font-weight: normal;
 	margin-bottom: 10px;
 }
+
+/* Sliding stuff
+------------------------------------------------ */
+.slidingDiv {
+     display: none;
+     margin-bottom: 5px;
+}
+
+.level {
+	margin-left: 10px;
+}
