@@ -192,10 +192,10 @@ function handleCourses(data) {
 	for( var i=0; i < len; i++ ) {
 
 		html += '<tr><td width="20">'+data[i].studypoints+' {% trans %}course.studypoints{% endtrans %}</td>'
-			+'<td>'+data[i].title+' {% trans %}course.studypoints{% endtrans %}</td>'
+			+'<td>'+data[i].title+' {% trans %}studypoints{% endtrans %}</td>'
 			+'<td width="20">'+data[i].mandatory+'</td>'
 			+'<td width="20">'+data[i].period+'</td>'
-			+'<td width="100">'+data[i].course_id+'</td>'
+			+'<td width="50">'+data[i].course_id+'</td>'
 			+'<td width="100">';
 		lenteachers = data[i].teachers.length;
 		for( var j=0; j<lenteachers; j++ ) {
