@@ -287,13 +287,13 @@ function handleCoursesByGroups(data,level) {
 			}
 			html += '">';
 		}
-		for( sKey in data[fKey] ) {
-			if( sKey == 'courses' ) {
-				html += handleCourses(data[fKey][sKey]);
-			} else {
-				html += handleCoursesByGroups(data[fKey][sKey],(level+1));
-			}
+		
+		if( sKey == 'courses' ) {
+			html += handleCourses(data[fKey][sKey]);
+		} else {
+			html += handleCoursesByGroups(data[fKey][sKey],(level+1));
 		}
+
 		if( sliding ) {
 			html += '</div>'
 		}
