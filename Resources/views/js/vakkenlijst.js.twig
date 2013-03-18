@@ -29,6 +29,8 @@ $(document).ready(function(){
 		$('#programs').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		$('#studies').hide();
 		$('#studies').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+		$('#levels').hide();
+		$('#levels').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_levels_by_id_title_noid', {'_locale': app.request.locale}) }}/' + $(this).val(), function(data) {
@@ -44,9 +46,6 @@ $(document).ready(function(){
 				$('#levels').html(html);
 			});
 			$('#levels').show();
-		} else {
-			$('#levels').hide();
-			$('#levels').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		}
 	});
 
@@ -57,6 +56,8 @@ $(document).ready(function(){
 		$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		$('#programs').hide();
 		$('#programs').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+		$('#studies').hide();
+		$('#studies').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_studies_by_id_title_noid', {'_locale': app.request.locale}) }}/' + $('#faculties').val() + '/' + $(this).val(), function(data) {
@@ -72,9 +73,6 @@ $(document).ready(function(){
 				$('#studies').html(html);
 			});
 			$('#studies').show();
-		} else {
-			$('#studies').hide();
-			$('#studies').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		}
 	});
 
@@ -83,6 +81,8 @@ $(document).ready(function(){
 		$('#courses').html('');
 		$('#stages').hide();
 		$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+		$('#programs').hide();
+		$('#programs').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_programs_by_id_title_noid', {'_locale': app.request.locale}) }}/' + $(this).val(), function(data) {
@@ -98,15 +98,14 @@ $(document).ready(function(){
 				$('#programs').html(html);
 			});
 			$('#programs').show();
-		} else {
-			$('#programs').hide();
-			$('#programs').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		}
 	});
 
 	$('#programs').change(function(){
 		$('#courses').hide();
 		$('#courses').html('');
+		$('#stages').hide();
+		$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_stages_by_id_title_noid', {'_locale': app.request.locale}) }}/' + $(this).val(), function(data) {
@@ -122,64 +121,13 @@ $(document).ready(function(){
 				$('#stages').html(html);
 			});
 			$('#stages').show();
-		} else {
-			$('#stages').hide();
-			$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		}
 	});
-/*
-	$('#stages').change(function(){				
-		if( $(this).val() != -1 ) {
-			$.getJSON('{{ path('dellaert_kul_education_api_list_courses_in_level_noids', {'_locale': app.request.locale}) }}/' + $('#programs').val() + '/' + $(this).val(), function(data) {
-				var html = '';
 
-				var len = data.length;
+	$('#stages').change(function(){
+		$('#courses').hide();
+		$('#courses').html('');
 
-				if( len > 0 ) {
-					html += '<b>{% trans %}courses{% endtrans %}</b><br />'
-						+'<table><tr><th><b>{% trans %}course.id{% endtrans %}</b></th>'
-						+'<th><b>{% trans %}course.title{% endtrans %}</b></th>'
-						+'<th><b>{% trans %}course.period{% endtrans %}</b></th>'
-						+'<th><b>{% trans %}course.mandatory{% endtrans %}</b></th>'
-						+'<th><b>{% trans %}course.studypoints{% endtrans %}</b></th>'
-						+'<th><b>{% trans %}course.teachers{% endtrans %}</b></th></tr>';
-
-					for( var i=0; i < len; i++ ) {
-						html += '<tr><td>'+data[i].course_id+'</td>'
-							+'<td>'+data[i].title+'</td>'
-							+'<td>'+data[i].period+'</td>'
-							+'<td>'+data[i].mandatory+'</td>'
-							+'<td>'+data[i].studypoints+'</td>'
-							+'<td>';
-						lenteachers = data[i].teachers.length;
-						for( var j=0; j<lenteachers; j++ ) {
-							html += data[i].teachers[j].name;
-							if( j < lenteachers-1 ) {
-								html += '; ';
-							}
-						}
-						html += '</td></tr>';
-					}
-
-					html += '</table><br />';
-				}
-
-				if( html == '' ) {
-					html = '{% trans %}no.course{% endtrans %}';
-				}
-
-				$('#courses').html(html);
-
-
-			});
-			$('#courses').show();
-		} else {
-			$('#courses').hide();
-			$('#courses').html('');
-		}
-	});
-*/
-	$('#stages').change(function(){				
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_courses_by_groups_in_level_noids', {'_locale': app.request.locale}) }}/' + $('#programs').val() + '/' + $(this).val(), function(data) {
 				var html = '';
@@ -221,9 +169,6 @@ $(document).ready(function(){
 			    });
 			});
 			$('#courses').slideDown(200);
-		} else {
-			$('#courses').hide();
-			$('#courses').html('');
 		}
 	});
 });
