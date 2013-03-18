@@ -178,4 +178,9 @@ $(document).ready(function(){
 			$('#courses').html('');
 		}
 	});
+
+    $('.show_hide').click(function(){
+		$(this).next('.slidingDiv').slideToggle();
+		return false;
+    });
 });
