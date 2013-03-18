@@ -183,16 +183,13 @@ $(document).ready(function(){
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_courses_by_groups_in_level_noids', {'_locale': app.request.locale}) }}/' + $('#programs').val() + '/' + $(this).val(), function(data) {
 				
-				console.log(data.length);
-				if( data.length == 1 ) {
-					$.each(data, function(fKey,fValue){
-						console.log('found: '+fKey+'-'+fValue);
-						$.each(fValue,function(sKey,sValue){
-							console.log('found: '+sKey+'-'+sValue);
-						});
-					});
+				//Assuming 1 root element:
+				for( fKey in data ) {
+					console.log('found: '+fKey+'-'+data[fKey]);
+					for( sKey in data[fKey] ) {
+						console.log('found: '+sKey+'-'+data[fKey][sKey]);
+					}
 				}
-
 			});
 		} else {
 			$('#courses').hide();
