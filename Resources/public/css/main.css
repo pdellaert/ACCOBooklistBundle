@@ -162,6 +162,7 @@ h6 {
 	borde-radius: 10px;
 	background-color: #005095;
 	color: #FFF;
+	padding-left: 33px;
 }
 
 #courses h2.closed, h3.closed, h4.closed, h5.closed, h6.closed {
