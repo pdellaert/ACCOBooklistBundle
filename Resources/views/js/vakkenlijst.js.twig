@@ -191,16 +191,16 @@ function handleCourses(data) {
 
 	for( var i=0; i < len; i++ ) {
 
-		html += '<tr><td width="30">'+data[i].studypoints+' {% trans %}studypoints{% endtrans %}</td>'
+		html += '<tr><td width="50">'+data[i].studypoints+' {% trans %}studypoints{% endtrans %}</td>'
 			+'<td>'+data[i].title+'</td>'
-			+'<td width="20">';
+			+'<td width="20" class="icon">';
 			if( data[i].mandatory == 'J' ) {
 				html += '<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/mandatory.png') }}" alt="{% trans %}course.mandatory{% endtrans %}" title="{% trans %}course.mandatory{% endtrans %}" />';
 			} else {
 				html += '<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/optional.png') }}" alt="{% trans %}course.optional{% endtrans %}" title="{% trans %}course.optional{% endtrans %}" />';
 			}
 			html +='</td>'
-			+'<td width="20">';
+			+'<td width="20" class="icon">';
 			switch(data[i].period) {
 				case '1':
 					html += '<img src="{{ asset('bundles/dellaertaccobooklist/images/sem1.png') }}" alt="{% trans %}course.sem1{% endtrans %}" title="{% trans %}course.sem1{% endtrans %}" />';
@@ -214,7 +214,7 @@ function handleCourses(data) {
 			}
 			html += '</td>'
 			+'<td width="50">'+data[i].course_id+'</td>'
-			+'<td width="20" class="teachers"><a href="#"> </a>';
+			+'<td width="20" class="icon"><a href="#"> </a>';
 		/*
 		lenteachers = data[i].teachers.length;
 		for( var j=0; j<lenteachers; j++ ) {

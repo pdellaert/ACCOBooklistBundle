@@ -126,6 +126,18 @@
 				<source>course.sem3</source>
 				<target>Eerste en tweede semester</target>
 			</trans-unit>
+			<trans-unit id="32">
+				<source>course</source>
+				<target>vak</target>
+			</trans-unit>
+			<trans-unit id="33">
+				<source>teachers.legend</source>
+				<target>Plaats je muis boven het icon voor een lijst van de docenten</target>
+			</trans-unit>
+			<trans-unit id="34">
+				<source>legend</source>
+				<target>Legende</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

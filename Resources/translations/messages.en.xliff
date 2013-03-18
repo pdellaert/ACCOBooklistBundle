@@ -126,6 +126,18 @@
 				<source>course.sem3</source>
 				<target>First and second term</target>
 			</trans-unit>
+			<trans-unit id="32">
+				<source>course</source>
+				<target>course</target>
+			</trans-unit>
+			<trans-unit id="33">
+				<source>teachers.legend</source>
+				<target>Hover the icon for a list of teachers</target>
+			</trans-unit>
+			<trans-unit id="34">
+				<source>legend</source>
+				<target>Legend</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

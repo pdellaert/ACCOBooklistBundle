@@ -184,12 +184,12 @@ h6 {
 	vertical-align: top;
 }
 
-#courses td.teachers {
+#courses td.icon {
 	text-align: center;
 	vertical-align: middle;
 }
 
-#courses td.teachers a {
+#courses td.icon a {
 	height: 11px;
 	width: 19px;
 	background: url(../images/teachers.png);
@@ -198,7 +198,7 @@ h6 {
 	display: block;
 }
 
-#courses td.teachers a:hover, #courses td.teachers a:focus {
+#courses td.icon a:hover, #courses td.icon a:focus {
 	background-position: 0 -11px;
 }
 
