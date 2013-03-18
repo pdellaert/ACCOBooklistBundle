@@ -195,9 +195,9 @@ function handleCourses(data) {
 			+'<td>'+data[i].title+'</td>'
 			+'<td width="20">';
 			if( data[i].mandatory == 'J' ) {
-				html += '<img src="{{ asset('bundles/dellaertaccobooklist/images/mandatory.png') }}" alt="mandatory" />';
+				html += '<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/mandatory.png') }}" alt="mandatory" />';
 			} else {
-				html += '<img src="{{ asset('bundles/dellaertaccobooklist/images/optional.png') }}" alt="optional" />';
+				html += '<img width="16" src="{{ asset('bundles/dellaertaccobooklist/images/optional.png') }}" alt="optional" />';
 			}
 			html +='</td>'
 			+'<td width="20">'+data[i].period+'</td>'
