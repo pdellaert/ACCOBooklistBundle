@@ -139,10 +139,6 @@ h2 {}
 /* Accordion configuration
 ------------------------------------------------ */
 
-#coursestest .accordion { 
-	visibility: hidden;
-}
-
 .accordion {
 	margin:0;
 	padding:0 10px;
