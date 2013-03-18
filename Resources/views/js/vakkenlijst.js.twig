@@ -127,7 +127,7 @@ $(document).ready(function(){
 			$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 		}
 	});
-
+/*
 	$('#stages').change(function(){				
 		if( $(this).val() != -1 ) {
 			$.getJSON('{{ path('dellaert_kul_education_api_list_courses_in_level_noids', {'_locale': app.request.locale}) }}/' + $('#programs').val() + '/' + $(this).val(), function(data) {
@@ -173,6 +173,26 @@ $(document).ready(function(){
 
 			});
 			$('#courses').show();
+		} else {
+			$('#courses').hide();
+			$('#courses').html('');
+		}
+	});
+*/
+	$('#stages').change(function(){				
+		if( $(this).val() != -1 ) {
+			$.getJSON('{{ path('dellaert_kul_education_api_list_courses_by_groups_in_level_noids', {'_locale': app.request.locale}) }}/' + $('#programs').val() + '/' + $(this).val(), function(data) {
+				
+				if( data.length == 1 ) {
+					$.each(data, function(fKey,fValue){
+						console.log('found: '+fKey+'-'+fValue);
+						$.each(fValue,function(sKey,sValue){
+							console.log('found: '+sKey+'-'+sValue);
+						});
+					});
+				}
+
+			});
 		} else {
 			$('#courses').hide();
 			$('#courses').html('');
