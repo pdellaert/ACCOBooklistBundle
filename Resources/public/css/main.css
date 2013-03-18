@@ -217,3 +217,17 @@ h6 {
 	float: right;
 	margin-bottom: 10px;
 }
+
+/* Tooltip stuff
+------------------------------------------------ */
+.tooltip {
+	display: none;
+	font-size: 0.9em;
+	color: #FFF;
+	padding: 5px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background-color: #005095;
+	width: 100px;
+}

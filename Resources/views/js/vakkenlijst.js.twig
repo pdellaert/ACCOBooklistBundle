@@ -177,6 +177,8 @@ $(document).ready(function(){
 			    		$(this).html('{% trans %}close.all{% endtrans %}');
 			    	}
 			    });
+
+			    $(".icon a[title]").tooltip();
 			});
 			$('#courses').slideDown(200);
 		}
@@ -214,17 +216,15 @@ function handleCourses(data) {
 			}
 			html += '</td>'
 			+'<td width="50">'+data[i].course_id+'</td>'
-			+'<td width="20" class="icon"><a href="#"> </a>';
-		/*
-		lenteachers = data[i].teachers.length;
-		for( var j=0; j<lenteachers; j++ ) {
-			html += data[i].teachers[j].name;
-			if( j < lenteachers-1 ) {
-				html += '; ';
+			+'<td width="20" class="icon"><a href="#" title="';
+			lenteachers = data[i].teachers.length;
+			for( var j=0; j<lenteachers; j++ ) {
+				html += data[i].teachers[j].firstletter + ' ' + data[i].teachers[j].lastname;
+				if( j < lenteachers-1 ) {
+					html += ', ';
+				}
 			}
-		}
-		*/
-		html += '</td></tr>';
+		html += '"> </a></td></tr>';
 	}
 
 	html += '</table><br />';
