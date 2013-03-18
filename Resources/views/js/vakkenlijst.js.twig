@@ -163,6 +163,8 @@ $(document).ready(function(){
 			    		$('.slidingDiv').addClass('closed');
 			    		$(this).removeClass('expanded_all');
 			    		$(this).addClass('closed_all');
+			    		$('.expanded').addClass('closed');
+			    		$('.expanded').removeClass('expanded');
 			    		$(this).html('{% trans %}expand.all{% endtrans %}');
 			    	} else {
 			    		$('.slidingDiv').slideDown(200);
@@ -170,6 +172,8 @@ $(document).ready(function(){
 			    		$('.slidingDiv').addClass('expanded');
 			    		$(this).removeClass('closed_all');
 			    		$(this).addClass('expanded_all');
+			    		$('.closed').addClass('expanded');
+			    		$('.closed').removeClass('closed');
 			    		$(this).html('{% trans %}close.all{% endtrans %}');
 			    	}
 			    });
