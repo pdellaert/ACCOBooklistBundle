@@ -294,22 +294,22 @@ function getCourses(stid,pid) {
 
 function changeDirectLink(fid,lid,sid,pid,stid) {
 	html = '<a href="' + document.URL;
-	if( typeof fid != undefined ) {
+	if( typeof fid != 'undefined' ) {
 		html += '?fid=' + fid;
-		if( typeof lid != undefined ) {
+		if( typeof lid != 'undefined' ) {
 			html += '&lid=' + lid;
-			if( typeof sid != undefined ) {
+			if( typeof sid != 'undefined' ) {
 				html += '&sid=' + sid;
-				if( typeof pid != undefined ) {
+				if( typeof pid != 'undefined' ) {
 					html += '&pid=' + pid;
-					if( typeof stid != undefined ) {
+					if( typeof stid != 'undefined' ) {
 						html += '&stid=' + stid;
 					}
 				}
 			}
 		}
 	}
-	html += '">{% trans %}direct.url{% endtrans %}</a>';
+	html += '">{% trans %}direct.link{% endtrans %}</a>';
 	$('#directlink_top').html(html);
 }
 
