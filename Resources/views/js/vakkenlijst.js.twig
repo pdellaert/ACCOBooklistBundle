@@ -292,6 +292,27 @@ function getCourses(stid,pid) {
 	}
 }
 
+function changeDirectLink(fid,lid,sid,pid,stid) {
+	html = '<a href="' + document.URL;
+	if( typeof fid != undefined ) {
+		html += '?fid=' + fid;
+		if( typeof lid != undefined ) {
+			html += '&lid=' + lid;
+			if( typeof sid != undefined ) {
+				html += '&sid=' + sid;
+				if( typeof pid != undefined ) {
+					html += '&pid=' + pid;
+					if( typeof stid != undefined ) {
+						html += '&stid=' + stid;
+					}
+				}
+			}
+		}
+	}
+	html += '">{% trans %}direct.url{% endtrans %}</a>';
+	$('#directlink_top').html(html);
+}
+
 function $_GET(name) { 
 	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
 	var regexS = "[\\?&]" + name + "=([^&#]*)";
@@ -313,22 +334,27 @@ $(document).ready(function(){
 
 	$('#faculties').change(function(){
 		getLevels($(this).val());
+		changeDirectLink($(this).val());
 	});
 
 	$('#levels').change(function(){
 		getStudies($(this).val(),$('#faculties').val());
+		changeDirectLink($('#faculties').val(),$(this).val());
 	});
 
 	$('#studies').change(function(){
 		getPrograms($(this).val());
+		changeDirectLink($('#faculties').val(),$('#levels').val(),$(this).val());
 	});
 
 	$('#programs').change(function(){
 		getStages($(this).val());
+		changeDirectLink($('#faculties').val(),$('#levels').val(),$('#studies').val(),$(this).val());
 	});
 
 	$('#stages').change(function(){
 		getCourses($(this).val(),$('#programs').val());
+		changeDirectLink($('#faculties').val(),$('#levels').val(),$('#studies').val(),$('#programs').val(),$(this).val());
 	});
 
 	var fid = $_GET('fid');
@@ -348,19 +374,25 @@ $(document).ready(function(){
 					if( stid != 'NULL' ) {
 						getStages(pid,stid);
 						getCourses(stid,pid);
+						changeDirectLink(fid,lid,sid,pid,stid);
 					} else {
 						getStages(pid);
+						changeDirectLink(fid,lid,sid,pid);
 					}
 				} else {
 					getPrograms(sid);
+					changeDirectLink(fid,lid,sid);
 				}
 			} else {
 				getStudies(lid,fid);
+				changeDirectLink(fid,lid);
 			}
 		} else {
 			getLevels(fid);
+			changeDirectLink(fid);
 		}
 	} else {
 		getFaculties();
+		changeDirectLink();
 	}
 });

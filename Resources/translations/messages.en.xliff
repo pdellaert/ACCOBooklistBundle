@@ -138,6 +138,10 @@
 				<source>legend</source>
 				<target>Legend</target>
 			</trans-unit>
+			<trans-unit id="35">
+				<source>direct.link</source>
+				<target>Direct link to this page</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
