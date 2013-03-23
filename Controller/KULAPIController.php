@@ -4,7 +4,7 @@ namespace Dellaert\ACCOBooklistBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class APIController extends Controller {
+class KULAPIController extends Controller {
 
 	public function listFacultiesByIdTitleAction() {
 		// Getting Faculties
