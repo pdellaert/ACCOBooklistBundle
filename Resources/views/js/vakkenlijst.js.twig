@@ -295,7 +295,7 @@ function getCourses(stid) {
 function $_GET(q,s) { 
 	s = s ? s : window.location.search; 
 	var re = new RegExp('&'+q+'(?:=([^&]*))?(?=&|$)','i'); 
-	return (s=s.replace('/^?/','&').match(re)) ? (typeof s[1] == 'undefined' ? '' : decodeURIComponent(s[1])) : undefined; 
+	return (s=s.replace('/^?/','&').match(re)) ? (typeof s[1] == 'undefined' ? '' : decodeURIComponent(s[1])) : 'NULL'; 
 } 
 
 $(document).ready(function(){
@@ -327,7 +327,7 @@ $(document).ready(function(){
 	});
 
 	var fid = $_GET('fid');
-	if( typeof fid != undefined ) {
+	if( fid != 'NULL' ) {
 		getFaculties(fid);
 		getLevels(fid);
 	} else {
