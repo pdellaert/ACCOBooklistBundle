@@ -8,7 +8,6 @@ use Dellaert\ACCOBooklistBundle\Utility\ACCOUtility;
 class KULAPIController extends Controller {
 
 	public function listFacultiesByIdTitleAction() {
-		$response = new Response($data);
 		if( ACCOUtility::verifyReferer($this->getRequest()->server->get('HTTP_REFERER'),$this->getRequest()->server->get('SERVER_NAME')) ) {
 			// Getting Faculties
 			$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
@@ -22,8 +21,10 @@ class KULAPIController extends Controller {
 
 
 			// Returning faculties
+			$response = new Response($data);
 			$response->headers->set('Content-Type', 'application/json');
     	} else {
+			$response = new Response();
     		$response->setStatusCode('403');
     	}
 	    return $response;
