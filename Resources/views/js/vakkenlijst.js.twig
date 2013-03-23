@@ -293,9 +293,14 @@ function getCourses(stid) {
 }
 
 function $_GET(q,s) { 
-	s = s ? s : window.location.search; 
-	var re = new RegExp('&'+q+'(?:=([^&]*))?(?=&|$)','i'); 
-	return (s=s.replace('/^?/','&').match(re)) ? (typeof s[1] == 'undefined' ? '' : decodeURIComponent(s[1])) : 'NULL'; 
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+	var regexS = "[\\?&]" + name + "=([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.search);
+	if(results == null)
+		return "NULL";
+	else
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
 } 
 
 $(document).ready(function(){
