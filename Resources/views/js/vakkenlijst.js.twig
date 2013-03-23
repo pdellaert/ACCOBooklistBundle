@@ -51,7 +51,7 @@ function getLevels(fid,lid) {
 	}
 }
 
-function getStages(lid,sid) {
+function getStudies(lid,sid) {
 	$('#courses').hide();
 	$('#courses').html('');
 	$('#stages').hide();
@@ -307,7 +307,7 @@ $(document).ready(function(){
 	});
 
 	$('#levels').change(function(){
-		getStages($(this).val());
+		getStudies($(this).val());
 	});
 
 	$('#studies').change(function(){
