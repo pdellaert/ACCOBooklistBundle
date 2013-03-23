@@ -332,9 +332,34 @@ $(document).ready(function(){
 	});
 
 	var fid = $_GET('fid');
+	var lid = $_GET('lid');
+	var sid = $_GET('sid');
+	var pid = $_GET('pid');
+	var stid = $_GET('stid');
+
 	if( fid != 'NULL' ) {
 		getFaculties(fid);
-		getLevels(fid);
+		if( lid != 'NULL' ) {
+			getLevels(fid,lid);
+			if( sid != 'NULL' ) {
+				getStudies(lid,sid);
+				if( pid != 'NULL' ) {
+					getPrograms(sid,pid);
+					if( stid != 'NULL' ) {
+						getStages(pid,stid);
+						getCourses(stid);
+					} else {
+						getStages(pid);
+					}
+				} else {
+					getPrograms(sid);
+				}
+			} else {
+				getStudies(lid);
+			}
+		} else {
+			getLevels(fid);
+		}
 	} else {
 		getFaculties();
 	}
