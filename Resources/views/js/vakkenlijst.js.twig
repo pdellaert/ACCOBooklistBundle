@@ -294,15 +294,15 @@ function getCourses(stid,pid) {
 
 function changeDirectLink(fid,lid,sid,pid,stid) {
 	html = '<a href="' + window.location.href.split('?')[0];
-	if( typeof fid != 'undefined' ) {
+	if( typeof fid != 'undefined' && fid != '-1' ) {
 		html += '?fid=' + fid;
-		if( typeof lid != 'undefined' ) {
+		if( typeof lid != 'undefined' && lid != '-1' ) {
 			html += '&lid=' + lid;
-			if( typeof sid != 'undefined' ) {
+			if( typeof sid != 'undefined' && sid != '-1' ) {
 				html += '&sid=' + sid;
-				if( typeof pid != 'undefined' ) {
+				if( typeof pid != 'undefined' && pid != '-1' ) {
 					html += '&pid=' + pid;
-					if( typeof stid != 'undefined' ) {
+					if( typeof stid != 'undefined' && stid != '-1' ) {
 						html += '&stid=' + stid;
 					}
 				}
