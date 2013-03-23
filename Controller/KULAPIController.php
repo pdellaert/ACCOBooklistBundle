@@ -31,98 +31,128 @@ class KULAPIController extends Controller {
 	}
 
 	public function listLevelsByIdTitleAction($fid) {
-		// Getting Levels
-		$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
-		$url .= '/'.$this->getRequest()->getLocale().'/levels-id-title/'.$fid;
-		$data = file_get_contents($url);
+		if( ACCOUtility::verifyReferer($this->getRequest()->server->get('HTTP_REFERER'),$this->getRequest()->server->get('SERVER_NAME')) ) {
+			// Getting Levels
+			$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
+			$url .= '/'.$this->getRequest()->getLocale().'/levels-id-title/'.$fid;
+			$data = file_get_contents($url);
 
-		if( $data === FALSE ) {
-			$data = '';
-		}
+			if( $data === FALSE ) {
+				$data = '';
+			}
 
-		// Returning levels
-		$response = new Response($data);
-		$response->headers->set('Content-Type', 'application/json');
+			// Returning levels
+			$response = new Response($data);
+			$response->headers->set('Content-Type', 'application/json');
+    	} else {
+			$response = new Response();
+    		$response->setStatusCode('403');
+    	}
 		return $response;
 	}
 
 	public function listStudiesByIdTitleAction($fid,$lid) {
-		// Getting Studies
-		$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
-		$url .= '/'.$this->getRequest()->getLocale().'/studies-id-title/'.$fid.'/'.$lid;
-		$data = file_get_contents($url);
+		if( ACCOUtility::verifyReferer($this->getRequest()->server->get('HTTP_REFERER'),$this->getRequest()->server->get('SERVER_NAME')) ) {
+			// Getting Studies
+			$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
+			$url .= '/'.$this->getRequest()->getLocale().'/studies-id-title/'.$fid.'/'.$lid;
+			$data = file_get_contents($url);
 
-		if( $data === FALSE ) {
-			$data = '';
-		}
+			if( $data === FALSE ) {
+				$data = '';
+			}
 
-		// Returning studies
-		$response = new Response($data);
-		$response->headers->set('Content-Type', 'application/json');
+			// Returning studies
+			$response = new Response($data);
+			$response->headers->set('Content-Type', 'application/json');
+    	} else {
+			$response = new Response();
+    		$response->setStatusCode('403');
+    	}
 		return $response;
 	}
 
 	public function listProgramsByIdTitleAction($sid) {
-		// Getting Programs
-		$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
-		$url .= '/'.$this->getRequest()->getLocale().'/programs-id-title/'.$sid;
-		$data = file_get_contents($url);
+		if( ACCOUtility::verifyReferer($this->getRequest()->server->get('HTTP_REFERER'),$this->getRequest()->server->get('SERVER_NAME')) ) {
+			// Getting Programs
+			$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
+			$url .= '/'.$this->getRequest()->getLocale().'/programs-id-title/'.$sid;
+			$data = file_get_contents($url);
 
-		if( $data === FALSE ) {
-			$data = '';
-		}
+			if( $data === FALSE ) {
+				$data = '';
+			}
 
-		// Returning programs
-		$response = new Response($data);
-		$response->headers->set('Content-Type', 'application/json');
+			// Returning programs
+			$response = new Response($data);
+			$response->headers->set('Content-Type', 'application/json');
+    	} else {
+			$response = new Response();
+    		$response->setStatusCode('403');
+    	}
 		return $response;
 	}
 
 	public function listStagesByIdTitleAction($pid) {
-		// Getting Stages
-		$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
-		$url .= '/'.$this->getRequest()->getLocale().'/stages-id-title/'.$pid;
-		$data = file_get_contents($url);
+		if( ACCOUtility::verifyReferer($this->getRequest()->server->get('HTTP_REFERER'),$this->getRequest()->server->get('SERVER_NAME')) ) {
+			// Getting Stages
+			$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
+			$url .= '/'.$this->getRequest()->getLocale().'/stages-id-title/'.$pid;
+			$data = file_get_contents($url);
 
-		if( $data === FALSE ) {
-			$data = '';
-		}
+			if( $data === FALSE ) {
+				$data = '';
+			}
 
-		// Returning stages
-		$response = new Response($data);
-		$response->headers->set('Content-Type', 'application/json');
+			// Returning stages
+			$response = new Response($data);
+			$response->headers->set('Content-Type', 'application/json');
+    	} else {
+			$response = new Response();
+    		$response->setStatusCode('403');
+    	}
 		return $response;
 	}
 
 	public function listCoursesInLevelAction($pid,$phid) {
-		// Getting Courses
-		$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
-		$url .= '/'.$this->getRequest()->getLocale().'/courses-in-level/'.$pid.'/'.$phid;
-		$data = file_get_contents($url);
+		if( ACCOUtility::verifyReferer($this->getRequest()->server->get('HTTP_REFERER'),$this->getRequest()->server->get('SERVER_NAME')) ) {
+			// Getting Courses
+			$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
+			$url .= '/'.$this->getRequest()->getLocale().'/courses-in-level/'.$pid.'/'.$phid;
+			$data = file_get_contents($url);
 
-		if( $data === FALSE ) {
-			$data = '';
-		}
+			if( $data === FALSE ) {
+				$data = '';
+			}
 
-		// Returning Courses
-		$response = new Response($data);
-		$response->headers->set('Content-Type', 'application/json');
+			// Returning Courses
+			$response = new Response($data);
+			$response->headers->set('Content-Type', 'application/json');
+    	} else {
+			$response = new Response();
+    		$response->setStatusCode('403');
+    	}
 		return $response;
 	}
 
 	public function listCoursesByGroupsInLevelAction($pid,$phid) {
-		// Getting Courses
-		$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
-		$url .= '/'.$this->getRequest()->getLocale().'/courses-by-groups-in-level/'.$pid.'/'.$phid;
-		$data = file_get_contents($url);
+		if( ACCOUtility::verifyReferer($this->getRequest()->server->get('HTTP_REFERER'),$this->getRequest()->server->get('SERVER_NAME')) ) {
+			// Getting Courses
+			$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
+			$url .= '/'.$this->getRequest()->getLocale().'/courses-by-groups-in-level/'.$pid.'/'.$phid;
+			$data = file_get_contents($url);
 
-		if( $data === FALSE ) {
-			$data = '';
-		}
+			if( $data === FALSE ) {
+				$data = '';
+			}
 
-		// Returning Courses
-		$response = new Response($data);
-		$response->headers->set('Content-Type', 'application/json');
+			// Returning Courses
+			$response = new Response($data);
+			$response->headers->set('Content-Type', 'application/json');
+    	} else {
+			$response = new Response();
+    		$response->setStatusCode('403');
+    	}
 		return $response;
 	}
 }
