@@ -51,7 +51,7 @@ function getLevels(fid,lid) {
 	}
 }
 
-function getStudies(lid,sid) {
+function getStudies(lid,fid,sid) {
 	$('#courses').hide();
 	$('#courses').html('');
 	$('#stages').hide();
@@ -62,7 +62,7 @@ function getStudies(lid,sid) {
 	$('#studies').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( lid != -1 ) {
-		$.getJSON('{{ path('dellaert_kul_education_api_list_studies_by_id_title_noid', {'_locale': app.request.locale}) }}/' + $('#faculties').val() + '/' + lid, function(data) {
+		$.getJSON('{{ path('dellaert_kul_education_api_list_studies_by_id_title_noid', {'_locale': app.request.locale}) }}/' + fid + '/' + lid, function(data) {
 			var len = data.length;
 			if( len == 0 ) {
 				var html = '<option value="-1">{% trans %}no.study{% endtrans %}</option>'
@@ -231,12 +231,12 @@ function handleCoursesByGroups(data,level) {
 	return html;
 }
 
-function getCourses(stid) {
+function getCourses(stid,pid) {
 	$('#courses').hide();
 	$('#courses').html('');
 
 	if( stid != -1 ) {
-		$.getJSON('{{ path('dellaert_kul_education_api_list_courses_by_groups_in_level_noids', {'_locale': app.request.locale}) }}/' + $('#programs').val() + '/' + stid, function(data) {
+		$.getJSON('{{ path('dellaert_kul_education_api_list_courses_by_groups_in_level_noids', {'_locale': app.request.locale}) }}/' + pid + '/' + stid, function(data) {
 			var html = '';
 
 			html = handleCoursesByGroups(data,1);
@@ -316,7 +316,7 @@ $(document).ready(function(){
 	});
 
 	$('#levels').change(function(){
-		getStudies($(this).val());
+		getStudies($(this).val(),$('#faculties').val());
 	});
 
 	$('#studies').change(function(){
@@ -328,7 +328,7 @@ $(document).ready(function(){
 	});
 
 	$('#stages').change(function(){
-		getCourses($(this).val());
+		getCourses($(this).val(),$('#programs').val());
 	});
 
 	var fid = $_GET('fid');
@@ -342,12 +342,12 @@ $(document).ready(function(){
 		if( lid != 'NULL' ) {
 			getLevels(fid,lid);
 			if( sid != 'NULL' ) {
-				getStudies(lid,sid);
+				getStudies(lid,fid,sid);
 				if( pid != 'NULL' ) {
 					getPrograms(sid,pid);
 					if( stid != 'NULL' ) {
 						getStages(pid,stid);
-						getCourses(stid);
+						getCourses(stid,pid);
 					} else {
 						getStages(pid);
 					}
@@ -355,7 +355,7 @@ $(document).ready(function(){
 					getPrograms(sid);
 				}
 			} else {
-				getStudies(lid);
+				getStudies(lid,fid);
 			}
 		} else {
 			getLevels(fid);
