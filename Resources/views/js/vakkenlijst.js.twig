@@ -1,5 +1,5 @@
 function getFaculties(fid) {
-	$.getJSON('{{ path('dellaert_kul_education_api_list_faculties_by_id_title', {'_locale': app.request.locale}) }}', function(data){
+	$.getJSON('https://accoapi.dellaert.org/kulapi/{app.request.locale}/faculties-id-title', function(data){
 		var len = data.length;
 		if( len == 0 ) {
 			var html = '<option value="-1">{% trans %}no.faculty{% endtrans %}</option>'
@@ -31,7 +31,7 @@ function getLevels(fid,lid) {
 	$('#levels').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( fid != -1 ) {
-		$.getJSON('{{ path('dellaert_kul_education_api_list_levels_by_id_title_noid', {'_locale': app.request.locale}) }}/' + fid, function(data) {
+		$.getJSON('https://accoapi.dellaert.org/kulapi/{app.request.locale}/levels-id-title/' + fid, function(data) {
 			var len = data.length;
 			if( len == 0 ) {
 				var html = '<option value="-1">{% trans %}no.level{% endtrans %}</option>'
@@ -62,7 +62,7 @@ function getStudies(lid,fid,sid) {
 	$('#studies').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( lid != -1 ) {
-		$.getJSON('{{ path('dellaert_kul_education_api_list_studies_by_id_title_noid', {'_locale': app.request.locale}) }}/' + fid + '/' + lid, function(data) {
+		$.getJSON('https://accoapi.dellaert.org/kulapi/{app.request.locale}/studies-id-title/' + fid + '/' + lid, function(data) {
 			var len = data.length;
 			if( len == 0 ) {
 				var html = '<option value="-1">{% trans %}no.study{% endtrans %}</option>'
@@ -91,7 +91,7 @@ function getPrograms(sid,pid) {
 	$('#programs').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( sid != -1 ) {
-		$.getJSON('{{ path('dellaert_kul_education_api_list_programs_by_id_title_noid', {'_locale': app.request.locale}) }}/' + sid, function(data) {
+		$.getJSON('https://accoapi.dellaert.org/kulapi/{app.request.locale}/programs-id-title/' + sid, function(data) {
 			var len = data.length;
 			if( len == 0 ) {
 				var html = '<option value="-1">{% trans %}no.program{% endtrans %}</option>'
@@ -118,7 +118,7 @@ function getStages(pid,stid) {
 	$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( pid != -1 ) {
-		$.getJSON('{{ path('dellaert_kul_education_api_list_stages_by_id_title_noid', {'_locale': app.request.locale}) }}/' + pid, function(data) {
+		$.getJSON('https://accoapi.dellaert.org/kulapi/{app.request.locale}/stages-id-title/' + pid, function(data) {
 			var len = data.length;
 			if( len == 0 ) {
 				var html = '<option value="-1">{% trans %}no.stage{% endtrans %}</option>'
@@ -236,7 +236,7 @@ function getCourses(stid,pid) {
 	$('#courses').html('');
 
 	if( stid != -1 ) {
-		$.getJSON('{{ path('dellaert_kul_education_api_list_courses_by_groups_in_level_noids', {'_locale': app.request.locale}) }}/' + pid + '/' + stid, function(data) {
+		$.getJSON('https://accoapi.dellaert.org/kulapi/{app.request.locale}/courses-by-groups-in-level/' + pid + '/' + stid, function(data) {
 			var html = '';
 
 			html = handleCoursesByGroups(data,1);
