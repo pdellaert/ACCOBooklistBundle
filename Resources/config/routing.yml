@@ -7,3 +7,90 @@ dellaert_acco_booklist_homepage_with_locale:
     defaults: { _controller: DellaertACCOBooklistBundle:Main:index, _locale: nl }
     requirements:
         _locale: nl|en
+
+dellaert_acco_booklist_list_kul_faculties_by_id_title:
+    pattern:   /{_locale}/kul/faculties-id-title
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listFacultiesByIdTitle, _locale: nl }
+    requirements:
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_levels_by_id_title_noid:
+    pattern:   /{_locale}/kul/levels-id-title
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listLevelsByIdTitle, _locale: nl }
+    requirements:
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_levels_by_id_title:
+    pattern:   /{_locale}/kul/levels-id-title/{fid}
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listLevelsByIdTitle, _locale: nl }
+    requirements:
+        fid: \d+
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_studies_by_id_title_noid:
+    pattern:   /{_locale}/kul/studies-id-title
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listStudiesByIdTitle, _locale: nl }
+    requirements:
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_studies_by_id_title:
+    pattern:   /{_locale}/kul/studies-id-title/{fid}/{lid}
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listStudiesByIdTitle, _locale: nl }
+    requirements:
+        fid: \d+
+        lid: \d+
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_programs_by_id_title_noid:
+    pattern:   /{_locale}/kul/programs-id-title
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listProgramsByIdTitle, _locale: nl }
+    requirements:
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_programs_by_id_title:
+    pattern:   /{_locale}/kul/programs-id-title/{sid}
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listProgramsByIdTitle, _locale: nl }
+    requirements:
+        sid: \d+
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_stages_by_id_title_noid:
+    pattern:   /{_locale}/kul/stages-id-title
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listStagesByIdTitle, _locale: nl }
+    requirements:
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_stages_by_id_title:
+    pattern:   /{_locale}/kul/stages-id-title/{pid}
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listStagesByIdTitle, _locale: nl }
+    requirements:
+        sid: \d+
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_courses_in_level_noids:
+    pattern:   /{_locale}/kul/courses-in-level
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listCoursesInLevel, _locale: nl }
+    requirements:
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_courses_in_level:
+    pattern:   /{_locale}/kul/courses-in-level/{pid}/{phid}
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listCoursesInLevel, _locale: nl }
+    requirements:
+        phid: \d+
+        sid: \d+
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_courses_by_groups_in_level_noids:
+    pattern:   /{_locale}/kul/courses-by-groups-in-level
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listCoursesByGroupsInLevel, _locale: nl }
+    requirements:
+        _locale: nl|en
+
+dellaert_acco_booklist_list_kul_courses_by_groups_in_level:
+    pattern:   /{_locale}/kul/courses-by-groups-in-level/{pid}/{phid}
+    defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listCoursesByGroupsInLevel, _locale: nl }
+    requirements:
+        phid: \d+
+        sid: \d+
+        _locale: nl|en
