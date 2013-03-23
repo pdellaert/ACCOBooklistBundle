@@ -3,23 +3,30 @@ namespace Dellaert\ACCOBooklistBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Dellaert\ACCOBooklistBundle\Utility\ACCOUtility;
 
 class KULAPIController extends Controller {
 
 	public function listFacultiesByIdTitleAction() {
-		// Getting Faculties
-		$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
-		$url .= '/'.$this->getRequest()->getLocale().'/faculties-id-title';
-		$data = file_get_contents($url);
-
-		if( $data === FALSE ) {
-			$data = '';
-		}
-
-		// Returning faculties
 		$response = new Response($data);
-		$response->headers->set('Content-Type', 'application/json');
-    	return $response;
+		if( ACCOUtility::verifyReferer($this->getRequest()->server->get('HTTP_REFERER'),$this->getRequest()->server->get('SERVER_NAME')) ) {
+			// Getting Faculties
+			$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
+			$url .= '/'.$this->getRequest()->getLocale().'/faculties-id-title';
+			$data = file_get_contents($url);
+
+			if( $data === FALSE ) {
+				$data = '';
+			}
+
+
+
+			// Returning faculties
+			$response->headers->set('Content-Type', 'application/json');
+    	} else {
+    		$response->setStatusCode('403');
+    	}
+	    return $response;
 	}
 
 	public function listLevelsByIdTitleAction($fid) {
