@@ -292,6 +292,12 @@ function getCourses(stid) {
 	}
 }
 
+function $_GET(q,s) { 
+	s = s ? s : window.location.search; 
+	var re = new RegExp('&'+q+'(?:=([^&]*))?(?=&|$)','i'); 
+	return (s=s.replace(/^?/,'&').match(re)) ? (typeof s[1] == 'undefined' ? '' : decodeURIComponent(s[1])) : undefined; 
+} 
+
 $(document).ready(function(){
 	$('#faculties').hide();
 	$('#levels').hide();
@@ -299,8 +305,6 @@ $(document).ready(function(){
 	$('#programs').hide();
 	$('#stages').hide();
 	$('#courses').hide();
-
-	getFaculties();
 
 	$('#faculties').change(function(){
 		getLevels($(this).val());
@@ -321,4 +325,12 @@ $(document).ready(function(){
 	$('#stages').change(function(){
 		getCourses($(this).val());
 	});
+
+	var fid = $_GET('fid');
+	if( typeof fid != undefined ) {
+		getFaculties(fid);
+		getLevels(fid);
+	} else {
+		getFaculties();
+	}
 });
