@@ -11,7 +11,7 @@ class KULAPIController extends Controller {
 		if( ACCOUtility::verifyReferer($this->getRequest()->server->get('HTTP_REFERER'),$this->getRequest()->server->get('SERVER_NAME')) ) {
 			// Getting Faculties
 			$url = $this->container->getParameter('dellaert_acco_booklist.kulapi.base');
-			$url .= '/'.$this->getRequest()->getLocale().'/schools-id-title/';
+			$url .= '/'.$this->getRequest()->getLocale().'/schools-id-title';
 			$data = file_get_contents($url);
 
 			if( $data === FALSE ) {
