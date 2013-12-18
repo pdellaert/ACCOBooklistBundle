@@ -332,7 +332,7 @@ function changeDirectLink(scid,fid,lid,sid,pid,stid) {
 	if( typeof scid != 'undefined' && scid != '-1' ) {
 		html += '?scid=' + scid;
 		if( typeof fid != 'undefined' && fid != '-1' ) {
-			html += '?fid=' + fid;
+			html += '&fid=' + fid;
 			if( typeof lid != 'undefined' && lid != '-1' ) {
 				html += '&lid=' + lid;
 				if( typeof sid != 'undefined' && sid != '-1' ) {
