@@ -1,24 +1,59 @@
-function getFaculties(fid) {
-	$.getJSON('{{ path('dellaert_acco_booklist_list_kul_faculties_by_id_title', {'_locale': app.request.locale}) }}', function(data){
+function getSchools(scid) {
+	$.getJSON('{{ path('dellaert_acco_booklist_list_schools_by_id_title', {'_locale': app.request.locale}) }}', function(data){
 		var len = data.length;
 		if( len == 0 ) {
-			var html = '<option value="-1">{% trans %}no.faculty{% endtrans %}</option>'
+			var html = '<option value="-1">{% trans %}no.school{% endtrans %}</option>'
 		} else {
-			var html = '<option value="-1">{% trans %}choose.faculty{% endtrans %}</option>';
+			var html = '<option value="-1">{% trans %}choose.school{% endtrans %}</option>';
 		}
 		for( var i=0; i < len; i++ ){
 			html += '<option value="' + data[i].id + '"';
-			if( typeof fid != undefined && data[i].id == fid ) {
+			if( typeof fid != undefined && data[i].id == scid ) {
 				html += 'selected';
 			} 
 			html += '>' + data[i].title + '</option>';
 		}
-		$('#faculties').html(html);
+		$('#schools').html(html);
 	});
-	$('#faculties').show();
+	$('#schools').show();
 }
 
-function getLevels(fid,lid) {
+function getFaculties(scid,fid) {
+	$('#courses').hide();
+	$('#courses').html('');
+	$('#stages').hide();
+	$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+	$('#programs').hide();
+	$('#programs').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+	$('#studies').hide();
+	$('#studies').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+	$('#levels').hide();
+	$('#levels').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+	$('#faculties').hide();
+	$('#faculties').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+
+	if( scid != -1 ) {
+		$.getJSON('{{ path('dellaert_acco_booklist_list_faculties_by_id_title_noid', {'_locale': app.request.locale}) }}/' + scid, function(data){
+			var len = data.length;
+			if( len == 0 ) {
+				var html = '<option value="-1">{% trans %}no.faculty{% endtrans %}</option>'
+			} else {
+				var html = '<option value="-1">{% trans %}choose.faculty{% endtrans %}</option>';
+			}
+			for( var i=0; i < len; i++ ){
+				html += '<option value="' + data[i].id + '"';
+				if( typeof fid != undefined && data[i].id == fid ) {
+					html += 'selected';
+				} 
+				html += '>' + data[i].title + '</option>';
+			}
+			$('#faculties').html(html);
+		});
+		$('#faculties').show();
+	}
+}
+
+function getLevels(scid,fid,lid) {
 	$('#courses').hide();
 	$('#courses').html('');
 	$('#stages').hide();
@@ -31,7 +66,7 @@ function getLevels(fid,lid) {
 	$('#levels').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( fid != -1 ) {
-		$.getJSON('{{ path('dellaert_acco_booklist_list_kul_levels_by_id_title_noid', {'_locale': app.request.locale}) }}/' + fid, function(data) {
+		$.getJSON('{{ path('dellaert_acco_booklist_list_levels_by_id_title_noid', {'_locale': app.request.locale}) }}/' + scid + '/' + fid, function(data) {
 			var len = data.length;
 			if( len == 0 ) {
 				var html = '<option value="-1">{% trans %}no.level{% endtrans %}</option>'
@@ -51,7 +86,7 @@ function getLevels(fid,lid) {
 	}
 }
 
-function getStudies(lid,fid,sid) {
+function getStudies(scid,lid,fid,sid) {
 	$('#courses').hide();
 	$('#courses').html('');
 	$('#stages').hide();
@@ -62,7 +97,7 @@ function getStudies(lid,fid,sid) {
 	$('#studies').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( lid != -1 ) {
-		$.getJSON('{{ path('dellaert_acco_booklist_list_kul_studies_by_id_title_noid', {'_locale': app.request.locale}) }}/' + fid + '/' + lid, function(data) {
+		$.getJSON('{{ path('dellaert_acco_booklist_list_studies_by_id_title_noid', {'_locale': app.request.locale}) }}/' + scid + '/' + fid + '/' + lid, function(data) {
 			var len = data.length;
 			if( len == 0 ) {
 				var html = '<option value="-1">{% trans %}no.study{% endtrans %}</option>'
@@ -82,7 +117,7 @@ function getStudies(lid,fid,sid) {
 	}
 }
 
-function getPrograms(sid,pid) {
+function getPrograms(scid,sid,pid) {
 	$('#courses').hide();
 	$('#courses').html('');
 	$('#stages').hide();
@@ -91,7 +126,7 @@ function getPrograms(sid,pid) {
 	$('#programs').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( sid != -1 ) {
-		$.getJSON('{{ path('dellaert_acco_booklist_list_kul_programs_by_id_title_noid', {'_locale': app.request.locale}) }}/' + sid, function(data) {
+		$.getJSON('{{ path('dellaert_acco_booklist_list_programs_by_id_title_noid', {'_locale': app.request.locale}) }}/' + scid + '/' + sid, function(data) {
 			var len = data.length;
 			if( len == 0 ) {
 				var html = '<option value="-1">{% trans %}no.program{% endtrans %}</option>'
@@ -111,14 +146,14 @@ function getPrograms(sid,pid) {
 	}
 }
 
-function getStages(pid,stid) {
+function getStages(scid,pid,stid) {
 	$('#courses').hide();
 	$('#courses').html('');
 	$('#stages').hide();
 	$('#stages').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( pid != -1 ) {
-		$.getJSON('{{ path('dellaert_acco_booklist_list_kul_stages_by_id_title_noid', {'_locale': app.request.locale}) }}/' + pid, function(data) {
+		$.getJSON('{{ path('dellaert_acco_booklist_list_stages_by_id_title_noid', {'_locale': app.request.locale}) }}/' + scid + '/' + pid, function(data) {
 			var len = data.length;
 			if( len == 0 ) {
 				var html = '<option value="-1">{% trans %}no.stage{% endtrans %}</option>'
@@ -231,12 +266,12 @@ function handleCoursesByGroups(data,level) {
 	return html;
 }
 
-function getCourses(stid,pid) {
+function getCourses(scid,stid,pid) {
 	$('#courses').hide();
 	$('#courses').html('');
 
 	if( stid != -1 ) {
-		$.getJSON('{{ path('dellaert_acco_booklist_list_kul_courses_by_groups_in_level_noids', {'_locale': app.request.locale}) }}/' + pid + '/' + stid, function(data) {
+		$.getJSON('{{ path('dellaert_acco_booklist_list_courses_by_groups_in_level_noids', {'_locale': app.request.locale}) }}/' + scid + '/' + pid + '/' + stid, function(data) {
 			var html = '';
 
 			html = handleCoursesByGroups(data,1);
@@ -292,18 +327,21 @@ function getCourses(stid,pid) {
 	}
 }
 
-function changeDirectLink(fid,lid,sid,pid,stid) {
+function changeDirectLink(scid,fid,lid,sid,pid,stid) {
 	html = '<a href="' + window.location.href.split('?')[0];
-	if( typeof fid != 'undefined' && fid != '-1' ) {
+	if( typeof scid != 'undefined' && scid != '-1' ) {
 		html += '?fid=' + fid;
-		if( typeof lid != 'undefined' && lid != '-1' ) {
-			html += '&lid=' + lid;
-			if( typeof sid != 'undefined' && sid != '-1' ) {
-				html += '&sid=' + sid;
-				if( typeof pid != 'undefined' && pid != '-1' ) {
-					html += '&pid=' + pid;
-					if( typeof stid != 'undefined' && stid != '-1' ) {
-						html += '&stid=' + stid;
+		if( typeof fid != 'undefined' && fid != '-1' ) {
+			html += '?fid=' + fid;
+			if( typeof lid != 'undefined' && lid != '-1' ) {
+				html += '&lid=' + lid;
+				if( typeof sid != 'undefined' && sid != '-1' ) {
+					html += '&sid=' + sid;
+					if( typeof pid != 'undefined' && pid != '-1' ) {
+						html += '&pid=' + pid;
+						if( typeof stid != 'undefined' && stid != '-1' ) {
+							html += '&stid=' + stid;
+						}
 					}
 				}
 			}
@@ -325,6 +363,7 @@ function $_GET(name) {
 } 
 
 $(document).ready(function(){
+	$('#schools').hide();
 	$('#faculties').hide();
 	$('#levels').hide();
 	$('#studies').hide();
@@ -332,31 +371,37 @@ $(document).ready(function(){
 	$('#stages').hide();
 	$('#courses').hide();
 
-	$('#faculties').change(function(){
-		getLevels($(this).val());
+	$('#schools').change(function(){
+		getFaculties($(this).val());
 		changeDirectLink($(this).val());
 	});
 
+	$('#faculties').change(function(){
+		getLevels($('#schools').val(),$(this).val());
+		changeDirectLink($('#schools').val(),$(this).val());
+	});
+
 	$('#levels').change(function(){
-		getStudies($(this).val(),$('#faculties').val());
-		changeDirectLink($('#faculties').val(),$(this).val());
+		getStudies($('#schools').val(),$(this).val(),$('#faculties').val());
+		changeDirectLink($('#schools').val(),$('#faculties').val(),$(this).val());
 	});
 
 	$('#studies').change(function(){
-		getPrograms($(this).val());
-		changeDirectLink($('#faculties').val(),$('#levels').val(),$(this).val());
+		getPrograms($('#schools').val(),$(this).val());
+		changeDirectLink($('#schools').val(),$('#faculties').val(),$('#levels').val(),$(this).val());
 	});
 
 	$('#programs').change(function(){
-		getStages($(this).val());
-		changeDirectLink($('#faculties').val(),$('#levels').val(),$('#studies').val(),$(this).val());
+		getStages($('#schools').val(),$(this).val());
+		changeDirectLink($('#schools').val(),$('#faculties').val(),$('#levels').val(),$('#studies').val(),$(this).val());
 	});
 
 	$('#stages').change(function(){
-		getCourses($(this).val(),$('#programs').val());
-		changeDirectLink($('#faculties').val(),$('#levels').val(),$('#studies').val(),$('#programs').val(),$(this).val());
+		getCourses($('#schools').val(),$(this).val(),$('#programs').val());
+		changeDirectLink($('#schools').val(),$('#faculties').val(),$('#levels').val(),$('#studies').val(),$('#programs').val(),$(this).val());
 	});
 
+	var scid = $_GET('scid');
 	var fid = $_GET('fid');
 	var lid = $_GET('lid');
 	var sid = $_GET('sid');
@@ -364,35 +409,41 @@ $(document).ready(function(){
 	var stid = $_GET('stid');
 
 	if( fid != 'NULL' ) {
-		getFaculties(fid);
-		if( lid != 'NULL' ) {
-			getLevels(fid,lid);
-			if( sid != 'NULL' ) {
-				getStudies(lid,fid,sid);
-				if( pid != 'NULL' ) {
-					getPrograms(sid,pid);
-					if( stid != 'NULL' ) {
-						getStages(pid,stid);
-						getCourses(stid,pid);
-						changeDirectLink(fid,lid,sid,pid,stid);
+		getSchools(scid);
+		if( fid != 'NULL' ) {
+			getFaculties(scid,fid);
+			if( lid != 'NULL' ) {
+				getLevels(scid,fid,lid);
+				if( sid != 'NULL' ) {
+					getStudies(scid,lid,fid,sid);
+					if( pid != 'NULL' ) {
+						getPrograms(scid,sid,pid);
+						if( stid != 'NULL' ) {
+							getStages(scid,pid,stid);
+							getCourses(scid,stid,pid);
+							changeDirectLink(scid,fid,lid,sid,pid,stid);
+						} else {
+							getStages(scid,pid);
+							changeDirectLink(scid,fid,lid,sid,pid);
+						}
 					} else {
-						getStages(pid);
-						changeDirectLink(fid,lid,sid,pid);
+						getPrograms(scid,sid);
+						changeDirectLink(scid,fid,lid,sid);
 					}
 				} else {
-					getPrograms(sid);
-					changeDirectLink(fid,lid,sid);
+					getStudies(scid,lid,fid);
+					changeDirectLink(scid,fid,lid);
 				}
 			} else {
-				getStudies(lid,fid);
-				changeDirectLink(fid,lid);
+				getLevels(scid,fid);
+				changeDirectLink(scid,fid);
 			}
 		} else {
-			getLevels(fid);
-			changeDirectLink(fid);
+			getFaculties(scid,fid);
+			changeDirectLink(scid,fid);
 		}
 	} else {
-		getFaculties();
+		getSchools();
 		changeDirectLink();
 	}
 });
