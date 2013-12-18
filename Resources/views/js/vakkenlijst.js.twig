@@ -330,7 +330,7 @@ function getCourses(scid,stid,pid) {
 function changeDirectLink(scid,fid,lid,sid,pid,stid) {
 	html = '<a href="' + window.location.href.split('?')[0];
 	if( typeof scid != 'undefined' && scid != '-1' ) {
-		html += '?fid=' + fid;
+		html += '?scid=' + scid;
 		if( typeof fid != 'undefined' && fid != '-1' ) {
 			html += '?fid=' + fid;
 			if( typeof lid != 'undefined' && lid != '-1' ) {
