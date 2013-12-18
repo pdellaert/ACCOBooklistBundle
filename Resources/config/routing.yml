@@ -8,7 +8,7 @@ dellaert_acco_booklist_homepage_with_locale:
     requirements:
         _locale: nl|en
 
-dellaert_acco_booklist_list_schoolss_by_id_title:
+dellaert_acco_booklist_list_schools_by_id_title:
     pattern:   /{_locale}/schools-id-title
     defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listSchoolsByIdTitle, _locale: nl }
     requirements:
