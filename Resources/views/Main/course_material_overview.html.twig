@@ -4,6 +4,7 @@
 	<script type="text/javascript">
 		{% include 'DellaertACCOBooklistBundle:js:course_material_overview.js.twig' %}
 	</script>
+	<script type="text/javascript" src="{{ asset('bundles/dellaertaccobooklist/js/sorttable.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -24,8 +25,63 @@
 	</form>
 	<div class="hr"> </div>
 	{% if showResults %}
-	<div id="overview">
-		Resultaten
+	<div id="course_material_overview" style="width: 1000px">
+		<table width="100%" cellspacing="0" class="sortable">
+			<thead>
+				<tr>
+					<th>Laatste aanpassing op</th>
+					<th>Instelling</th>
+					<th>Opleiding</th>
+					<th>Jaar</th>
+					<th>Semester</th>
+					<th>Vak</th>
+					<th>Vaknummer</th>
+					<th>Verplicht/Keuze</th>
+					<th>Materiaal</th>
+					<th>Aantal studenten</th>
+					<th>Docent 1 voornaam</th>
+					<th>Docent 1 naam</th>
+					<th>Docent 1 e-mail</th>
+					<th>Docent 1 Telefoon</th>
+					<th>Docent 2 voornaam</th>
+					<th>Docent 2 naam</th>
+					<th>Docent 2 e-mail</th>
+					<th>Docent 2 Telefoon</th>
+					<th>Docent 3 voornaam</th>
+					<th>Docent 3 naam</th>
+					<th>Docent 3 e-mail</th>
+					<th>Docent 3 Telefoon</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for line in results %}
+				<tr>
+					<td>{{ line.last_edit }}</td>
+					<td>{{ line.school }}</td>
+					<td>{{ line.program }}</td>
+					<td class="textright">{{ line.year }}</td>
+					<td class="textright">{{ line.period }}</td>
+					<td>{{ line.course }}</td>
+					<td>{{ line.course_id }}</td>
+					<td>{{ line.mandatory }}</td>
+					<td>{{ line.material }}</td>
+					<td>{{ line.student_nr }}</td>
+					<td>{{ line.teacher1_firstname }}</td>
+					<td>{{ line.teacher1_name }}</td>
+					<td>{{ line.teacher1_email }}</td>
+					<td>{{ line.teacher1_phone }}</td>
+					<td>{{ line.teacher2_firstname }}</td>
+					<td>{{ line.teacher2_name }}</td>
+					<td>{{ line.teacher2_email }}</td>
+					<td>{{ line.teacher2_phone }}</td>
+					<td>{{ line.teacher3_firstname }}</td>
+					<td>{{ line.teacher3_name }}</td>
+					<td>{{ line.teacher3_email }}</td>
+					<td>{{ line.teacher3_phone }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 	</div>
 	{% endif %}
 {% endblock %}
