@@ -3,6 +3,7 @@
 namespace Dellaert\ACCOBooklistBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Dellaert\ACCOBooklistBundle\Utility\APIUtility;
 
 class MainController extends Controller
 {
