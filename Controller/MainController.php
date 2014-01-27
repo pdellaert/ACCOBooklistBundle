@@ -10,7 +10,7 @@ class MainController extends Controller
 		return $this->render('DellaertACCOBooklistBundle:Main:index.html.twig');
 	}
 
-	public function courseMaterialOverviewAction($locale) {
+	public function courseMaterialOverviewAction() {
 		$form = $this->createFormBuilder()
 			->add('school','choice',array(
 				'choices'=>array('-1'=>'Even geduld...'),
