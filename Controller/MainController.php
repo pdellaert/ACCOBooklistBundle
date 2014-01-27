@@ -36,11 +36,12 @@ class MainController extends Controller
 		$results = array();
 		$showResults = false;
 		if( $request->getMethod() == 'POST' ) {
-			$scid = $request->request->get('form[school]');
-			$fid = $request->request->get('form[faculty]');
-			$lid = $request->request->get('form[level]');
+			$formData = $request->request->get('form');
+			$scid = $formData['school'];
+			$fid = $formData['faculty'];
+			$lid = $formData['level'];
 
-			if( $scid > 0 && $fid > 0 && $lid > 0 ) {
+			if( !empty($scid)  && $fid > 0 && $lid > 0 ) {
 				$showResults = true;
 				$locale = $request->getLocale();
 
