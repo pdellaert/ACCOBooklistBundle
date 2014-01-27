@@ -14,7 +14,7 @@ class MainController extends Controller
 		$request = $this->getRequest();
 		$scid = -1;
 		$fid = -1;
-		$lid = -1
+		$lid = -1;
 
 		$form = $this->createFormBuilder()
 			->add('school','choice',array(
