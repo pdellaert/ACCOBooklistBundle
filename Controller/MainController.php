@@ -16,7 +16,12 @@ class MainController extends Controller
 		$fid = -1;
 		$lid = -1;
 
-		$form = $this->createFormBuilder()
+		$defaultData = array(
+			'school' => -1,
+			'faculty' => -1,
+			'level' => -1
+			);
+		$form = $this->createFormBuilder($defaultData)
 			->add('school','choice',array(
 				'choices'=>array('-1'=>'Even geduld...'),
 				'expanded'=>false,
