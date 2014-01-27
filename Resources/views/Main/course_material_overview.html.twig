@@ -8,7 +8,7 @@
 
 {% block content %}
 	<h1>{% trans %}literaturelist{% endtrans %}</h1>
-	<form action="{{ path('ServerAdd') }}" method="post" {{ form_enctype(form) }}>
+	<form action="{{ path('dellaert_acco_booklist_course_material_overview') }}" method="post" {{ form_enctype(form) }}>
 		<div class="form-row">
 			{{ form_widget(form.school, { 'attr': { 'class': 'form_dropdown', 'id': 'schools' } }) }}
 		</div>
