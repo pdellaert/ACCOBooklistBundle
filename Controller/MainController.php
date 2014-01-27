@@ -16,12 +16,7 @@ class MainController extends Controller
 		$fid = -1;
 		$lid = -1;
 
-		$defaultData = array(
-			'school' => -1,
-			'faculty' => -1,
-			'level' => -1
-			);
-		$form = $this->createFormBuilder($defaultData)
+		$form = $this->createFormBuilder()
 			->add('school','choice',array(
 				'choices'=>array('-1'=>'Even geduld...'),
 				'expanded'=>false,
@@ -41,12 +36,12 @@ class MainController extends Controller
 		$results = array();
 		$showResults = false;
 		if( $request->getMethod() == 'POST' ) {
-			$form->handleRequest($request);
-			if( $form->isValid() ) {
+			$scid = $request->request->get('school');
+			$fid = $request->request->get('faculty');
+			$lid = $request->request->get('level');
+
+			if( $scid > 0 && $fid > 0 && $lid > 0 ) {
 				$showResults = true;
-				$scid = $form->get('school');
-				$fid = $form->get('faculty');
-				$lid = $form->get('level');
 				$locale = $request->getLocale();
 
 				$studies = APIUtility::getLiveStudiesByIdTitle($this->container,$locale,$scid,$fid,$lid);
