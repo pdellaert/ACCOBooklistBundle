@@ -36,9 +36,9 @@ class MainController extends Controller
 		$results = array();
 		$showResults = false;
 		if( $request->getMethod() == 'POST' ) {
-			$scid = $request->request->get('school');
-			$fid = $request->request->get('faculty');
-			$lid = $request->request->get('level');
+			$scid = $request->request->get('form[school]');
+			$fid = $request->request->get('form[faculty]');
+			$lid = $request->request->get('form[level]');
 
 			if( $scid > 0 && $fid > 0 && $lid > 0 ) {
 				$showResults = true;
