@@ -12,7 +12,7 @@ class MainController extends Controller
 
 	public function courseMaterialOverviewAction() {
 		$request = $this->getRequest();
-		
+
 		$form = $this->createFormBuilder()
 			->add('school','choice',array(
 				'choices'=>array('-1'=>'Even geduld...'),
@@ -34,6 +34,6 @@ class MainController extends Controller
 		if( $request->getMethod() == 'POST' ) {
 			// TODO: Do the generating stuff
 		}
-		return $this->render('DellaertACCOBooklistBundle:Main:course_material_overview.html.twig',array('locale'=>$locale,'form'=>$form->createView(),'results'=>$results,'showResults'=>$showResults));
+		return $this->render('DellaertACCOBooklistBundle:Main:course_material_overview.html.twig',array('form'=>$form->createView(),'results'=>$results,'showResults'=>$showResults));
 	}
 }
