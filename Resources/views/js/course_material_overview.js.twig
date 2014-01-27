@@ -90,15 +90,15 @@ $(document).ready(function(){
 		getStudies($('#schools').val(),$(this).val(),$('#faculties').val());
 	});
 
-	var scid = $_POST('scid');
-	var fid = $_POST('fid');
-	var lid = $_POST('lid');
+	var scid = {{ scid }};
+	var fid = {{ fid }};
+	var lid = {{ lid }};
 
-	if( fid != 'NULL' ) {
+	if( fid != -1 ) {
 		getSchools(scid);
-		if( fid != 'NULL' ) {
+		if( fid != -1 ) {
 			getFaculties(scid,fid);
-			if( lid != 'NULL' ) {
+			if( lid != -1 ) {
 				getLevels(scid,fid,lid);
 			} else {
 				getLevels(scid,fid);
