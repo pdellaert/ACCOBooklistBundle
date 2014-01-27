@@ -10,13 +10,13 @@
 	<h1>{% trans %}literaturelist{% endtrans %}</h1>
 	<form action="{{ path('dellaert_acco_booklist_course_material_overview') }}" method="post" {{ form_enctype(form) }}>
 		<div class="form-row">
-			{{ form_widget(form.school, { 'attr': { 'class': 'form_dropdown', 'id': 'schools' } }) }}
+			{{ form_widget(form.school, { 'attr': { 'class': 'form_dropdown' } }) }}
 		</div>
 		<div class="form-row">
-			{{ form_widget(form.faculty, { 'attr': { 'class': 'form_dropdown', 'id': 'faculties' } }) }}
+			{{ form_widget(form.faculty, { 'attr': { 'class': 'form_dropdown' } }) }}
 		</div>
 		<div class="form-row">
-			{{ form_widget(form.level, { 'attr': { 'class': 'form_dropdown', 'id': 'levels' } }) }}
+			{{ form_widget(form.level, { 'attr': { 'class': 'form_dropdown' } }) }}
 		</div>
 		<div id="buttons">
 			<input type="submit" value="Toon overzicht" />

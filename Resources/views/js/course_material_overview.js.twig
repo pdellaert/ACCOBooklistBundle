@@ -13,17 +13,17 @@ function getSchools(scid) {
 			} 
 			html += '>' + data[i].title + '</option>';
 		}
-		$('#schools').html(html);
+		$('#form_school').html(html);
 	});
-	$('#schools').show();
+	$('#form_school').show();
 }
 
 function getFaculties(scid,fid) {
 	$('#buttons').hide();
-	$('#levels').hide();
-	$('#levels').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
-	$('#faculties').hide();
-	$('#faculties').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+	$('#form_level').hide();
+	$('#form_level').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+	$('#form_faculty').hide();
+	$('#form_faculty').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( scid != -1 ) {
 		$.getJSON('{{ path('dellaert_acco_booklist_list_faculties_by_id_title_noid', {'_locale': app.request.locale}) }}/' + scid, function(data){
@@ -40,15 +40,15 @@ function getFaculties(scid,fid) {
 				} 
 				html += '>' + data[i].title + '</option>';
 			}
-			$('#faculties').html(html);
+			$('#form_faculty').html(html);
 		});
-		$('#faculties').show();
+		$('#form_faculty').show();
 	}
 }
 
 function getLevels(scid,fid,lid) {
-	$('#levels').hide();
-	$('#levels').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+	$('#form_level').hide();
+	$('#form_level').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
 
 	if( fid != -1 ) {
 		$.getJSON('{{ path('dellaert_acco_booklist_list_levels_by_id_title_noid', {'_locale': app.request.locale}) }}/' + scid + '/' + fid, function(data) {
@@ -65,29 +65,28 @@ function getLevels(scid,fid,lid) {
 				} 
 				html += '>' + data[i].title + '</option>';
 			}
-			$('#levels').html(html);
+			$('#form_level').html(html);
 		});
-		$('#levels').show();
-		$('#buttons').show();
+		$('#form_level').show();
 	}
 }
 
 $(document).ready(function(){
-	$('#schools').hide();
-	$('#faculties').hide();
-	$('#levels').hide();
+	$('#form_school').hide();
+	$('#form_faculty').hide();
+	$('#form_level').hide();
 	$('#buttons').hide();
 
-	$('#schools').change(function(){
+	$('#form_school').change(function(){
 		getFaculties($(this).val());
 	});
 
-	$('#faculties').change(function(){
-		getLevels($('#schools').val(),$(this).val());
+	$('#form_faculty').change(function(){
+		getLevels($('#form_school').val(),$(this).val());
 	});
 
-	$('#levels').change(function(){
-		getStudies($('#schools').val(),$(this).val(),$('#faculties').val());
+	$('#form_level').change(function(){
+		$('#buttons').show();
 	});
 
 	var scid = {{ scid }};
