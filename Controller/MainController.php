@@ -11,6 +11,8 @@ class MainController extends Controller
 	}
 
 	public function courseMaterialOverviewAction() {
+		$request = $this->getRequest();
+		
 		$form = $this->createFormBuilder()
 			->add('school','choice',array(
 				'choices'=>array('-1'=>'Even geduld...'),
