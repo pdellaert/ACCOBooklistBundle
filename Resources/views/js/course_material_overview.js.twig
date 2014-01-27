@@ -1,0 +1,112 @@
+function getSchools(scid) {
+	$.getJSON('{{ path('dellaert_acco_booklist_list_schools_by_id_title', {'_locale': app.request.locale}) }}', function(data){
+		var len = data.length;
+		if( len == 0 ) {
+			var html = '<option value="-1">{% trans %}no.school{% endtrans %}</option>'
+		} else {
+			var html = '<option value="-1">{% trans %}choose.school{% endtrans %}</option>';
+		}
+		for( var i=0; i < len; i++ ){
+			html += '<option value="' + data[i].id + '"';
+			if( typeof fid != undefined && data[i].id == scid ) {
+				html += 'selected';
+			} 
+			html += '>' + data[i].title + '</option>';
+		}
+		$('#schools').html(html);
+	});
+	$('#schools').show();
+}
+
+function getFaculties(scid,fid) {
+	$('#buttons').hide();
+	$('#levels').hide();
+	$('#levels').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+	$('#faculties').hide();
+	$('#faculties').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+
+	if( scid != -1 ) {
+		$.getJSON('{{ path('dellaert_acco_booklist_list_faculties_by_id_title_noid', {'_locale': app.request.locale}) }}/' + scid, function(data){
+			var len = data.length;
+			if( len == 0 ) {
+				var html = '<option value="-1">{% trans %}no.faculty{% endtrans %}</option>'
+			} else {
+				var html = '<option value="-1">{% trans %}choose.faculty{% endtrans %}</option>';
+			}
+			for( var i=0; i < len; i++ ){
+				html += '<option value="' + data[i].id + '"';
+				if( typeof fid != undefined && data[i].id == fid ) {
+					html += 'selected';
+				} 
+				html += '>' + data[i].title + '</option>';
+			}
+			$('#faculties').html(html);
+		});
+		$('#faculties').show();
+	}
+}
+
+function getLevels(scid,fid,lid) {
+	$('#levels').hide();
+	$('#levels').html('<option value="-1">{% trans %}patience{% endtrans %}</option>');
+
+	if( fid != -1 ) {
+		$.getJSON('{{ path('dellaert_acco_booklist_list_levels_by_id_title_noid', {'_locale': app.request.locale}) }}/' + scid + '/' + fid, function(data) {
+			var len = data.length;
+			if( len == 0 ) {
+				var html = '<option value="-1">{% trans %}no.level{% endtrans %}</option>'
+			} else {
+				var html = '<option value="-1">{% trans %}choose.level{% endtrans %}</option>';
+			}
+			for( var i=0; i < len; i++ ){
+				html += '<option value="' + data[i].id + '"';
+				if( typeof lid != undefined && data[i].id == lid ) {
+					html += ' selected';
+				} 
+				html += '>' + data[i].title + '</option>';
+			}
+			$('#levels').html(html);
+		});
+		$('#levels').show();
+		$('#buttons').show();
+	}
+}
+
+$(document).ready(function(){
+	$('#schools').hide();
+	$('#faculties').hide();
+	$('#levels').hide();
+	$('#buttons').hide();
+
+	$('#schools').change(function(){
+		getFaculties($(this).val());
+	});
+
+	$('#faculties').change(function(){
+		getLevels($('#schools').val(),$(this).val());
+	});
+
+	$('#levels').change(function(){
+		getStudies($('#schools').val(),$(this).val(),$('#faculties').val());
+	});
+
+	var scid = $_POST('scid');
+	var fid = $_POST('fid');
+	var lid = $_POST('lid');
+
+	if( fid != 'NULL' ) {
+		getSchools(scid);
+		if( fid != 'NULL' ) {
+			getFaculties(scid,fid);
+			if( lid != 'NULL' ) {
+				getLevels(scid,fid,lid);
+			} else {
+				getLevels(scid,fid);
+			}
+		} else {
+			getFaculties(scid,fid);
+		}
+	} else {
+		getSchools();
+	}
+});

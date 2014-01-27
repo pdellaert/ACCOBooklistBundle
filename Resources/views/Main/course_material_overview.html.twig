@@ -1,0 +1,31 @@
+{% extends "DellaertACCOBooklistBundle::layout.html.twig" %}
+
+{% block extrajs %}
+	<script type="text/javascript">
+		{% include 'DellaertACCOBooklistBundle:js:coure_material_overview.js.twig' %}
+	</script>
+{% endblock %}
+
+{% block content %}
+	<h1>{% trans %}literaturelist{% endtrans %}</h1>
+	<form action="{{ path('ServerAdd') }}" method="post" {{ form_enctype(form) }}>
+		<div class="form-row">
+			{{ form_widget(form.school, { 'attr': { 'class': 'form_dropdown', 'id': 'schools' } }) }}
+		</div>
+		<div class="form-row">
+			{{ form_widget(form.faculty, { 'attr': { 'class': 'form_dropdown', 'id': 'faculties' } }) }}
+		</div>
+		<div class="form-row">
+			{{ form_widget(form.level, { 'attr': { 'class': 'form_dropdown', 'id': 'levels' } }) }}
+		</div>
+		<div id="buttons">
+			<input type="submit" value="Toon overzicht" />
+		</div>
+	</form>
+	<div class="hr"> </div>
+	{% if showResults %}
+	<div id="overview">
+		Resultaten
+	</div>
+	{% endif %}
+{% endblock %}
