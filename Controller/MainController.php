@@ -34,6 +34,6 @@ class MainController extends Controller
 		if( $request->getMethod() == 'POST' ) {
 			// TODO: Do the generating stuff
 		}
-		return $this->render('DellaertACCOBooklistBundle:Main:course_material_overview.html.twig',array('form'=>$form->createView(),'results'=>$results,'showResults'=>$showResults));
+		return $this->render('DellaertACCOBooklistBundle:Main:course_material_overview.html.twig',array('form'=>$form->getForm()->createView(),'results'=>$results,'showResults'=>$showResults));
 	}
 }
