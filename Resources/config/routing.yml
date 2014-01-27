@@ -8,9 +8,9 @@ dellaert_acco_booklist_homepage_with_locale:
     requirements:
         _locale: nl|en
 
-dellaert_acco_booklist_generate_course_material_overview:
-    pattern: /{_locale}/generate-course-material-overview
-    defaults: { _controller: DellaertACCOBooklistBundle:Main:generateCourseMaterialOverview, _locale: nl }
+dellaert_acco_booklist_course_material_overview:
+    pattern: /{_locale}/course-material-overview
+    defaults: { _controller: DellaertACCOBooklistBundle:Main:courseMaterialOverview, _locale: nl }
     requirements:
         _locale: nl|en
 
