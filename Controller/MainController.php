@@ -98,7 +98,7 @@ class MainController extends Controller
 										break;
 								}
 
-								$courseDetails = ACCOUtility::getLiveCourseDetails($this->container,$locale,$scid,$course['id']);
+								$courseDetails = ACCOUtility::getLiveCourseDetails($this->container,$locale,$scid,$course['course_id']);
 								$courseMaterial = '';
 								foreach( $courseDetails['teaching_activities'] as $teaching_activity ) {
 									$courseMaterial .= strip_tags($teaching_activity['course_material']).' - ';
