@@ -3,7 +3,7 @@
 namespace Dellaert\ACCOBooklistBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Dellaert\ACCOBooklistBundle\Utility\APIUtility;
+use Dellaert\ACCOBooklistBundle\Utility\ACCOUtility;
 
 class MainController extends Controller
 {
@@ -46,11 +46,11 @@ class MainController extends Controller
 				$showResults = true;
 				$locale = $request->getLocale();
 
-				$studies = APIUtility::getLiveStudiesByIdTitle($this->container,$locale,$scid,$fid,$lid);
+				$studies = ACCOUtility::getLiveStudiesByIdTitle($locale,$scid,$fid,$lid);
 				foreach($studies as $study) {
-					$programs = APIUtility::getLiveProgramsByIdTitle($this->container,$locale,$scid,$study['id']);
+					$programs = ACCOUtility::getLiveProgramsByIdTitle($this->container,$locale,$scid,$study['id']);
 					foreach($programs as $program) {
-						$stages = APIUtility::getLiveStagesByIdTitle($this->container,$locale,$scid,$program['id']);
+						$stages = ACCOUtility::getLiveStagesByIdTitle($this->container,$locale,$scid,$program['id']);
 						foreach($stages as $stage) {
 							switch($stage['id']) {
 								case '1':
@@ -73,7 +73,7 @@ class MainController extends Controller
 									$ftxt = 'geen';
 									break;
 							}
-							$courses = APIUtility::getLiveCoursesInLevel($this->container,$locale,$scid,$program['id'],$stage['id'],1);
+							$courses = ACCOUtility::getLiveCoursesInLevel($this->container,$locale,$scid,$program['id'],$stage['id'],1);
 							$programTxt = preg_replace('/\s+/',' ',$program['title'].'('.$program['studypoints'].' sp.)');
 							foreach($courses as $course) {
 								switch($course['mandatory']) {
@@ -98,7 +98,7 @@ class MainController extends Controller
 										break;
 								}
 
-								$courseDetails = APIUtility::getLiveCourseDetails($this->container,$course['original_language'],$scid,$course['course_id']);
+								$courseDetails = ACCOUtility::getLiveCourseDetails($this->container,$course['original_language'],$scid,$course['course_id']);
 								$courseMaterial = '';
 								foreach( $courseDetails['teaching_activities'] as $teaching_activity ) {
 									$courseMaterial .= strip_tags($teaching_activity['course_material']).' - ';
@@ -107,7 +107,7 @@ class MainController extends Controller
 
 								$line = array(
 									'last_edit'		=>	data("d/m/Y"),
-									'school'		=>	APIUtility::$schools[$scid][0],
+									'school'		=>	ACCOUtility::$schools[$scid][0],
 									'program'		=>	$programTxt,
 									'year'			=>	$ftxt,
 									'period'			=>	$ptxt,
