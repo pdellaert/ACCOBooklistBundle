@@ -101,7 +101,7 @@ class MainController extends Controller
 
 								$courseDetails = ACCOUtility::getLiveCourseDetails($this->container,$locale,$scid,$course['course_id']);
 								$courseMaterial = '';
-								if( is_array($courseDetails['teaching_activities']) && count($courseDetails['teaching_activities']) > 0 ) {
+								if( array_key_exists('teaching_activities',$courseDetails) && is_array($courseDetails['teaching_activities']) && count($courseDetails['teaching_activities']) > 0 ) {
 									foreach( $courseDetails['teaching_activities'] as $teaching_activity ) {
 										$courseMaterial .= strip_tags($teaching_activity['course_material']).' - ';
 									}
