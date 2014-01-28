@@ -89,11 +89,11 @@ $(document).ready(function(){
 		$('#buttons').show();
 	});
 
-	var scid = {{ scid }};
-	var fid = {{ fid }};
-	var lid = {{ lid }};
+	var scid = '{{ scid }}';
+	var fid = '{{ fid }}';
+	var lid = '{{ lid }}';
 
-	if( fid != -1 ) {
+	if( scid != -1 ) {
 		getSchools(scid);
 		if( fid != -1 ) {
 			getFaculties(scid,fid);
