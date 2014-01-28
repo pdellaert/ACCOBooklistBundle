@@ -63,7 +63,7 @@ class ACCOUtility {
         return json_decode($data,true);
     }
 
-    public static function getLiveCourseDetails($container,$original_language,$scid,$cid) {
+    public static function getLiveCourseDetails($container,$locale,$scid,$cid) {
         // Getting Courses
         $url = $container->getParameter('dellaert_acco_booklist.kulapi.base');
         $url .= '/'.$locale.'/course-details/'.$scid.'/'.$cid;
