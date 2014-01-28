@@ -106,7 +106,7 @@ class MainController extends Controller
 								$courseMaterial = substr($courseMaterial, 0, -3);
 
 								$line = array(
-									'last_edit'		=>	data("d/m/Y"),
+									'last_edit'		=>	date("d/m/Y"),
 									'school'		=>	ACCOUtility::$schools[$scid][0],
 									'program'		=>	$programTxt,
 									'year'			=>	$ftxt,
