@@ -45,6 +45,7 @@ class MainController extends Controller
 			if( !empty($scid)  && $fid > 0 && $lid > 0 ) {
 				$showResults = true;
 				$locale = $request->getLocale();
+				$schools = ACCOUtility::getLiveSchoolsbyIdTitle($this->container,$locale);
 
 				$studies = ACCOUtility::getLiveStudiesByIdTitle($this->container,$locale,$scid,$fid,$lid);
 				foreach($studies as $study) {
@@ -107,7 +108,7 @@ class MainController extends Controller
 
 								$line = array(
 									'last_edit'		=>	date("d/m/Y"),
-									'school'		=>	ACCOUtility::$schools[$scid][0],
+									'school'		=>	$schools[$scid],
 									'program'		=>	$programTxt,
 									'year'			=>	$ftxt,
 									'period'			=>	$ptxt,

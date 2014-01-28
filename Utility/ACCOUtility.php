@@ -11,6 +11,24 @@ class ACCOUtility {
 		return false;
 	}
 
+    public static function getLiveSchoolsbyIdTitle($container,$locale) {
+        // Getting Studies
+        $url = $container->getParameter('dellaert_acco_booklist.kulapi.base');
+        $url .= '/'.$locale.'/schools-id-title';
+        $data = file_get_contents($url);
+
+        if( $data === FALSE ) {
+            $data = '';
+        }
+        $dataAr = json_decode($data,true);
+        $result = array();
+        foreach($dataAr as $school) {
+            $result[$school['id']] = $school['title'];
+        }
+
+        return $result;
+    }
+
     public static function getLiveStudiesByIdTitle($container,$locale,$scid,$fid,$lid) {
         // Getting Studies
         $url = $container->getParameter('dellaert_acco_booklist.kulapi.base');
