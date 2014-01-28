@@ -46,7 +46,7 @@ class MainController extends Controller
 				$showResults = true;
 				$locale = $request->getLocale();
 
-				$studies = ACCOUtility::getLiveStudiesByIdTitle($locale,$scid,$fid,$lid);
+				$studies = ACCOUtility::getLiveStudiesByIdTitle($this->container,$locale,$scid,$fid,$lid);
 				foreach($studies as $study) {
 					$programs = ACCOUtility::getLiveProgramsByIdTitle($this->container,$locale,$scid,$study['id']);
 					foreach($programs as $program) {
