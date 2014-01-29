@@ -24,6 +24,9 @@
 		</div>
 	</form>
 	<div class="hr"> </div>
+	{% if timerRemaining > 0 %}
+		Je moet nog <b>{{ timerRemaining }}</b> seconden wachten voor je een nieuwe lijst mag opvragen, dit ter beveiliging van overbelasting.
+	{% endif %}
 	{% if showResults %}
 	<div id="course_material_overview" style="overflow-x: scroll">
 		<table width="100%" cellspacing="0" class="sortable">

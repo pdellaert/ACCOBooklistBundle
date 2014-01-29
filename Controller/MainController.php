@@ -36,13 +36,33 @@ class MainController extends Controller
 			->getForm();
 		$results = array();
 		$showResults = false;
-		if( $request->getMethod() == 'POST' ) {
+
+		// write a timer so no requests in a number of seconds are made...
+		$now = time();
+		$timerExceeded = false;
+		$timerRemaining = 0;
+		if( file_exists('/tmp/course-material-overview-timer') ) {
+			$lastExecution = file_get_contents('/tmp/course-material-overview-timer');
+			$timerRemaining = $now-$lastExecution;
+			if( $timerRemaining >= (15*60) ) {
+				$timerExceeded = true;
+				file_put_contents('/tmp/course-material-overview-timer', $now);
+			} else {
+				$timerExceeded = false;
+			}
+		} else {
+			$timerExceeded = true;
+			$timerRemaining = 0;
+			file_put_contents('/tmp/course-material-overview-timer', $now);
+		}
+
+		if( $request->getMethod() == 'POST' && $timerExceeded ) {
 			$formData = $request->request->get('form');
 			$scid = $formData['school'];
 			$fid = $formData['faculty'];
 			$lid = $formData['level'];
 
-			if( !empty($scid)  && $fid > 0 && $lid > 0 ) {
+			if( !empty($scid) && $fid > 0 && $lid > 0 ) {
 				$showResults = true;
 				$locale = $request->getLocale();
 				$schools = ACCOUtility::getLiveSchoolsbyIdTitle($this->container,$locale);
@@ -165,6 +185,6 @@ class MainController extends Controller
 				}
 			}
 		}
-		return $this->render('DellaertACCOBooklistBundle:Main:course_material_overview.html.twig',array('form'=>$form->createView(),'results'=>$results,'showResults'=>$showResults,'scid'=>$scid,'fid'=>$fid,'lid'=>$lid));
+		return $this->render('DellaertACCOBooklistBundle:Main:course_material_overview.html.twig',array('form'=>$form->createView(),'results'=>$results,'showResults'=>$showResults,'scid'=>$scid,'fid'=>$fid,'lid'=>$lid,'timerRemaining'=>$timerRemaining));
 	}
 }
