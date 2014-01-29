@@ -57,13 +57,13 @@ class MainController extends Controller
 			file_put_contents('/tmp/course-material-overview-timer', $now);
 		}
 
-		if( $request->getMethod() == 'POST' && $timerExceeded ) {
+		if( $request->getMethod() == 'POST' ) {
 			$formData = $request->request->get('form');
 			$scid = $formData['school'];
 			$fid = $formData['faculty'];
 			$lid = $formData['level'];
 
-			if( !empty($scid) && $fid > 0 && $lid > 0 ) {
+			if( $timerExceeded && !empty($scid) && $fid > 0 && $lid > 0 ) {
 				$showResults = true;
 				$locale = $request->getLocale();
 				$schools = ACCOUtility::getLiveSchoolsbyIdTitle($this->container,$locale);
