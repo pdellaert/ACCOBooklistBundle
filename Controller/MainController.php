@@ -41,10 +41,11 @@ class MainController extends Controller
 		$now = time();
 		$timerExceeded = false;
 		$timerRemaining = 0;
+		$timerMinwait = 15*60;
 		if( file_exists('/tmp/course-material-overview-timer') ) {
 			$lastExecution = file_get_contents('/tmp/course-material-overview-timer');
-			$timerRemaining = $now-$lastExecution;
-			if( $timerRemaining >= (15*60) ) {
+			$timerRemaining = $timerMinwait-($now-$lastExecution);
+			if( $timerRemaining <= 0 ) {
 				$timerExceeded = true;
 				file_put_contents('/tmp/course-material-overview-timer', $now);
 			} else {
