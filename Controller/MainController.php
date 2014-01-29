@@ -49,7 +49,7 @@ class MainController extends Controller
                 $timerExceeded = true;
                 file_put_contents('/tmp/course-material-overview-timer', $now);
             }
-        } else {
+        } elseif( $request->getMethod() == 'POST' ) {
             $timerExceeded = true;
             $timerRemaining = 0;
             file_put_contents('/tmp/course-material-overview-timer', $now);
