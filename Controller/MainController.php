@@ -64,10 +64,7 @@ class MainController extends Controller
             ->getForm();
         // Getting ScheduledCommands
         $sc_repository = $this->getDoctrine()->getRepository('DellaertACCOBooklistBundle:ScheduledCommand');
-        $queued_sheduled_commands = $sc_repository->findBy(array('executed'=>false), array('finishedAt'=>'DESC'));
-        $completed_sheduled_commands = $sc_repository->findBy(array('executed'=>true),array('createdAt'=>'DESC'));
-
-        $nessage = '';
+        $message = '';
 
         if( $request->getMethod() == 'POST' ) {
             $formData = $request->request->get('form');
@@ -84,13 +81,24 @@ class MainController extends Controller
                 $levels = ACCOUtility::getLiveLevelsByIdTitle($this->container,$locale,$scid,$fid);
 
                 if( !empty($schools) && !empty($faculties) && !empty($levels) ) {
+                    $description = $schools[$scid].' - '.$faculties[$fid].' - '.$levels[$lid];
                     // Getting command type
                     $ct_repository = $this->getDoctrine()->getRepository('DellaertACCOBooklistBundle:CommandType');
                     $command_type = $ct_repository->FindById($cid);
-                    $description = $schools[$scid].' - '.$faculties[$fid].' - '.$levels[$lid];
 
                     $scheduled_command = new ScheduledCommand();
-                    
+                    $scheduled_command
+                        ->setExecuted(false)
+                        ->setDescription($description)
+                        ->setSchool($scid)
+                        ->setFaculty($fid)
+                        ->setLevel($lid)
+                        ->setCommandType($command_type);
+
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($scheduled_command);
+
+                    $message = 'Je aanvraag is aangemaakt en zal uitgevoerd worden volgens de wachtrij.';
 
                 } else {
                     $message = 'Invalid school, faculty or level!';
@@ -100,7 +108,10 @@ class MainController extends Controller
             }
         }
 
-        return $this->render('DellaertACCOBooklistBundle:Main:course_material_overview.html.twig',array('form'=>$form->createView(),'queued_sheduled_commands'=>$queued_sheduled_commands,'completed_sheduled_commands'=>$completed_sheduled_commands,'message'=>$message));
+        $queued_sheduled_commands = $sc_repository->findBy(array('executed'=>false), array('finishedAt'=>'DESC'));
+        $completed_sheduled_commands = $sc_repository->findBy(array('executed'=>true),array('createdAt'=>'ASC'));
+
+        return $this->render('DellaertACCOBooklistBundle:Main:command-schedule.html.twig',array('form'=>$form->createView(),'queued_sheduled_commands'=>$queued_sheduled_commands,'completed_sheduled_commands'=>$completed_sheduled_commands,'message'=>$message,'cid'=>$cid,'scid'=>$scid,'fid'=>$fid,'lid'=>$lid));
     }
 
     public function courseMaterialOverviewAction() {

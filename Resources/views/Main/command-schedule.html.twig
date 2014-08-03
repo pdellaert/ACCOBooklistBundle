@@ -1,0 +1,79 @@
+{% extends "DellaertACCOBooklistBundle::layout.html.twig" %}
+
+{% block extrajs %}
+	<script type="text/javascript">
+		{% include 'DellaertACCOBooklistBundle:js:command-schedule.js.twig' %}
+	</script>
+	<script type="text/javascript" src="{{ asset('bundles/dellaertaccobooklist/js/sorttable.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+	<h1>{% trans %}literaturelist{% endtrans %} export</h1>
+	{% if message %}
+		<p><b>{{ message }}</b></p>
+	{% endif %}
+	<p>Om een literatuurlijst te exporteren kies je eerst een export type selecteren, waarna je kiest voor welke school, faculteit en opleidingsniveau je de export wilt. Je aanvraag zal dan in een wachtrij worden toegevoegd. Van deze wachtrij wordt elk kwartier een opdracht uitgevoerd, zo wordt het systeem niet overbelast.</p>
+	<p>Onder het formulier vind je eerst een overzicht van de openstaande zaken in de wachtrij, en daaronder een overzicht van de verwerkte opdrachten</p>
+	<form action="{{ path('dellaert_acco_booklist_command_schedule') }}" method="post" {{ form_enctype(form) }}>
+		<div class="form-row">
+			{{ form_widget(form.command_type, { 'attr': { 'class': 'form_dropdown' } }) }}
+		</div>
+		<div class="form-row">
+			{{ form_widget(form.school, { 'attr': { 'class': 'form_dropdown' } }) }}
+		</div>
+		<div class="form-row">
+			{{ form_widget(form.faculty, { 'attr': { 'class': 'form_dropdown' } }) }}
+		</div>
+		<div class="form-row">
+			{{ form_widget(form.level, { 'attr': { 'class': 'form_dropdown' } }) }}
+		</div>
+		<div id="buttons">
+			<input type="submit" value="Voeg toe aan wachtrij" />
+		</div>
+	</form>
+	<div class="hr"> </div>
+	<h2>Wachtrij</h2>
+	<div id="command_queue">
+		<table width="100%" cellspacing="0" class="sortable">
+			<thead>
+				<tr>
+					<th>Aangevraagd op</th>
+					<th>School - faculteit - niveau</th>
+					<th>Export type</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for sc in queued_sheduled_commands %}
+				<tr>
+					<td>{{ sc.createdAt }}</td>
+					<td>{{ sc.description }}</td>
+					<td>{{ sc.commandType.description }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<h2>Resultaten</h2>
+	<div id="command_results">
+		<table width="100%" cellspacing="0" class="sortable">
+			<thead>
+				<tr>
+					<th>Uitgevoerd op</th>
+					<th>School - faculteit - niveau</th>
+					<th>Export type</th>
+					<th>Download link</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for sc in queued_sheduled_commands %}
+				<tr>
+					<td>{{ sc.finishedAt }}</td>
+					<td>{{ sc.description }}</td>
+					<td>{{ sc.commandType.description }}</td>
+					<td><a href="/data/{{ sc.result }}" target="_blank">Download</a></td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

@@ -49,7 +49,7 @@ class ScheduledCommand
     protected $executed;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=512, nullable=true)
      * @Assert\NotBlank()
      *
      * @var string

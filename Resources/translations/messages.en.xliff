@@ -150,6 +150,14 @@
 				<source>no.school</source>
 				<target>No school available</target>
 			</trans-unit>
+			<trans-unit id="38">
+				<source>no.command</source>
+				<target>No export type available</target>
+			</trans-unit>
+			<trans-unit id="39">
+				<source>choose.command</source>
+				<target>Choose an export type</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
