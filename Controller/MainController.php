@@ -120,6 +120,7 @@ class MainController extends Controller
 
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($scheduled_command);
+                    $em->flush();
 
                     $message = 'Je aanvraag is aangemaakt en zal uitgevoerd worden volgens de wachtrij.';
 
