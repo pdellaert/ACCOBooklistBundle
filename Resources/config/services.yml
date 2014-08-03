@@ -1,2 +1,3 @@
 parameters:
     dellaert_acco_booklist.kulapi.base: https://accoapi.dellaert.org/kulapi
+    dellaert_acco_booklist.data.base: '/home/dellaert-kultest/www/web/data'
