@@ -41,14 +41,14 @@ class CommandType
     /**
      * @ORM\OneToMany(targetEntity="ScheduledCommand", mappedBy="commandType")
      */
-    protected $sheduledCommands;
+    protected $scheduledCommands;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->sheduledCommands = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->scheduledCommands = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -113,7 +113,7 @@ class CommandType
      * @param \Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand $sheduledCommands
      * @return CommandType
      */
-    public function addSheduledCommand(\Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand $sheduledCommands)
+    public function addScheduledCommand(\Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand $sheduledCommands)
     {
         $this->sheduledCommands[] = $sheduledCommands;
 
@@ -125,7 +125,7 @@ class CommandType
      *
      * @param \Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand $sheduledCommands
      */
-    public function removeSheduledCommand(\Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand $sheduledCommands)
+    public function removeScheduledCommand(\Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand $sheduledCommands)
     {
         $this->sheduledCommands->removeElement($sheduledCommands);
     }
@@ -135,7 +135,7 @@ class CommandType
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getSheduledCommands()
+    public function getScheduledCommands()
     {
         return $this->sheduledCommands;
     }
