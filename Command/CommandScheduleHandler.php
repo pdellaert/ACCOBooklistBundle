@@ -51,10 +51,11 @@ class CommandScheduleHandler extends Command
 
             // Executing command (if not testing)
             $exec_result = 0;
+            $output = '';
             if($test) {
                 $output->writeln(date('Y-m-d H:i:s').' - TEST: Running command '.$current_execution_string);
             } else {
-                exec($current_execution_string,null,$exec_result);
+                exec($current_execution_string,$output,$exec_result);
             }
 
             if($exec_result == 0 ) {
