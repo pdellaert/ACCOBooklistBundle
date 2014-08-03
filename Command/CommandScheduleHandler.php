@@ -34,7 +34,7 @@ class CommandScheduleHandler extends Command
         $filedir = $container->getParameter('dellaert_acco_booklist.data.basedir');
 
         // Gathering open ScheduledCommand
-        $sc_repository = $container->getDoctrine()->getRepository('DellaertACCOBooklistBundle:ScheduledCommand');
+        $sc_repository = $container->get('doctrine')->getRepository('DellaertACCOBooklistBundle:ScheduledCommand');
         $queued_scheduled_commands = $sc_repository->findBy(array('executed'=>false), array('createdAt'=>'ASC'));
 
         if( !empty($queued_scheduled_commands) && is_array($queued_scheduled_commands) and count($queued_scheduled_commands) > 0 ) {
@@ -62,7 +62,7 @@ class CommandScheduleHandler extends Command
                     ->setResult($filename)
                     ->setFinishedAt(new \DateTime());
 
-                $em = $container->getDoctrine()->getManager();
+                $em = $container->get('doctrine')->getManager();
                 $em->persist($current_command);
                 $em->flush();
             }
