@@ -14,6 +14,18 @@ dellaert_acco_booklist_course_material_overview:
     requirements:
         _locale: nl|en
 
+dellaert_acco_booklist_command_schedule:
+    pattern: /{_locale}/command-schedule
+    defaults: { _controller: DellaertACCOBooklistBundle:Main:commandSchedule, _locale: nl }
+    requirements:
+        _locale: nl|en
+
+dellaert_acco_booklist_list_command_types_by_description:
+    pattern:   /{_locale}/command-types-id-description
+    defaults: { _controller: DellaertACCOBooklistBundle:Main:listCommandTypesByIdDescription, _locale: nl }
+    requirements:
+        _locale: nl|en
+
 dellaert_acco_booklist_list_schools_by_id_title:
     pattern:   /{_locale}/schools-id-title
     defaults: { _controller: DellaertACCOBooklistBundle:KULAPI:listSchoolsByIdTitle, _locale: nl }

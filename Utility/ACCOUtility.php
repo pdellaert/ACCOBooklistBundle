@@ -29,6 +29,32 @@ class ACCOUtility {
         return $result;
     }
 
+    public static function getLiveFacultiesByIdTitle($container,$locale,$scid) {
+        // Getting Studies
+        $url = $container->getParameter('dellaert_acco_booklist.kulapi.base');
+        $url .= '/'.$locale.'/faculties-id-title/'.$scid;
+        $data = file_get_contents($url);
+
+        if( $data === FALSE ) {
+            $data = '';
+        }
+
+        return json_decode($data,true);
+    }
+
+    public static function getLiveLevelsByIdTitle($container,$locale,$scid,$fid) {
+        // Getting Studies
+        $url = $container->getParameter('dellaert_acco_booklist.kulapi.base');
+        $url .= '/'.$locale.'/levels-id-title/'.$scid.'/'.$fid;
+        $data = file_get_contents($url);
+
+        if( $data === FALSE ) {
+            $data = '';
+        }
+
+        return json_decode($data,true);
+    }
+
     public static function getLiveStudiesByIdTitle($container,$locale,$scid,$fid,$lid) {
         // Getting Studies
         $url = $container->getParameter('dellaert_acco_booklist.kulapi.base');

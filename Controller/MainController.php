@@ -1,14 +1,106 @@
 <?php
-
 namespace Dellaert\ACCOBooklistBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dellaert\ACCOBooklistBundle\Utility\ACCOUtility;
+use Dellaert\ACCOBooklistBundle\Entity\CommandType;
+use Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand;
 
 class MainController extends Controller
 {
     public function indexAction() {
         return $this->render('DellaertACCOBooklistBundle:Main:index.html.twig');
+    }
+
+    public function listCommandTypesByIdDescriptionAction() {
+        if( ACCOUtility::verifyReferer($this->getRequest()->server->get('HTTP_REFERER'),$this->getRequest()->server->get('SERVER_NAME')) ) {
+            // Getting CommandTypes
+            $repository = $this->getDoctrine()->getRepository('DellaertACCOBooklistBundle:CommandType');
+            $command_types = $repository->findAll();
+
+            $data = array();
+            foreach( $command_types as $command_type ) {
+                $data[] = array('id'=>$command_type->getId(),'description'=>$command_type->getDescription());
+            }
+
+            // Returning CommandTypes
+            $response = new Response(json_encode($data));
+            $response->headers->set('Content-Type', 'application/json');
+        } else {
+            $response = new Response();
+            $response->setStatusCode('403');
+        }
+        return $response;
+    }
+
+    public function commandScheduleAction() {
+        $request = $this->getRequest();
+        $cid = -1;
+        $scid = -1;
+        $fid = -1;
+        $lid = -1;
+
+        $form = $this->createFormBuilder()
+            ->add('command_type','choice',array(
+                'choices'=>array('-1'=>'Even geduld...'),
+                'expanded'=>false,
+                'multiple'=>false,
+                'required'=>true))
+            ->add('school','choice',array(
+                'choices'=>array('-1'=>'Even geduld...'),
+                'expanded'=>false,
+                'multiple'=>false,
+                'required'=>true))
+            ->add('faculty','choice',array(
+                'choices'=>array('-1'=>'Even geduld...'),
+                'expanded'=>false,
+                'multiple'=>false,
+                'required'=>true))
+            ->add('level','choice',array(
+                'choices'=>array('-1'=>'Even geduld...'),
+                'expanded'=>false,
+                'multiple'=>false,
+                'required'=>true))
+            ->getForm();
+        // Getting ScheduledCommands
+        $sc_repository = $this->getDoctrine()->getRepository('DellaertACCOBooklistBundle:ScheduledCommand');
+        $queued_sheduled_commands = $sc_repository->findBy(array('executed'=>false), array('finishedAt'=>'DESC'));
+        $completed_sheduled_commands = $sc_repository->findBy(array('executed'=>true),array('createdAt'=>'DESC'));
+
+        $nessage = '';
+
+        if( $request->getMethod() == 'POST' ) {
+            $formData = $request->request->get('form');
+            $cid = $formData['command_type'];
+            $scid = $formData['school'];
+            $fid = $formData['faculty'];
+            $lid = $formData['level'];
+
+            if( $cid > 0 && !empty($scid) && $fid > 0 && $lid > 0 ) {
+                $locale = $request->getLocale();
+                // Getting name set
+                $schools = ACCOUtility::getLiveSchoolsbyIdTitle($this->container,$locale);
+                $faculties = ACCOUtility::getLiveFacultiesByIdTitle($this->container,$locale,$scid);
+                $levels = ACCOUtility::getLiveLevelsByIdTitle($this->container,$locale,$scid,$fid);
+
+                if( !empty($schools) && !empty($faculties) && !empty($levels) ) {
+                    // Getting command type
+                    $ct_repository = $this->getDoctrine()->getRepository('DellaertACCOBooklistBundle:CommandType');
+                    $command_type = $ct_repository->FindById($cid);
+                    $description = $schools[$scid].' - '.$faculties[$fid].' - '.$levels[$lid];
+
+                    $scheduled_command = new ScheduledCommand();
+                    
+
+                } else {
+                    $message = 'Invalid school, faculty or level!';
+                }
+            } else {
+                $message = 'Invalid command type, school, faculty or level!';
+            }
+        }
+
+        return $this->render('DellaertACCOBooklistBundle:Main:course_material_overview.html.twig',array('form'=>$form->createView(),'queued_sheduled_commands'=>$queued_sheduled_commands,'completed_sheduled_commands'=>$completed_sheduled_commands,'message'=>$message));
     }
 
     public function courseMaterialOverviewAction() {
