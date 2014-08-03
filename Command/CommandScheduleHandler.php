@@ -45,7 +45,7 @@ class CommandScheduleHandler extends Command
             $filename = date('Ymd_Hi_').preg_replace('/\s/','',trim($current_command->getDescription())).'.xlsx';
 
             // Generating the command
-            $search = array('%SCID%','%FID%','%LID%','%FILE%');
+            $search = array('\%SCID\%','\%FID\%','\%LID\%','\%FILE\%');
             $replace = array($current_command->getSchool(), $current_command->getFaculty(), $current_command->getLevel(), $filedir.'/'.$filename);
             $current_execution_string = preg_replace($search, $replace, $current_command_type->getCommand());
 
