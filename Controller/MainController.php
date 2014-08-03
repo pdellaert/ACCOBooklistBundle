@@ -82,7 +82,29 @@ class MainController extends Controller
                 $levels = ACCOUtility::getLiveLevelsByIdTitle($this->container,$locale,$scid,$fid);
 
                 if( !empty($schools) && !empty($faculties) && !empty($levels) ) {
-                    $description = $schools[$scid].' - '.$faculties[$fid].' - '.$levels[$lid];
+                    $school_title = '';
+                    foreach( $schools as $school ) {
+                        if( $school['id'] == $scid ) {
+                            $school_title = $school['title'];
+                            break;
+                        }
+                    }
+                    $faculty_title = '';
+                    foreach( $faculties as $faculty ) {
+                        if( $faculty['id'] == $fid ) {
+                            $faculty_title = $faculty['title'];
+                            break;
+                        }
+                    }
+                    $level_title = '';
+                    foreach( $levels as $level ) {
+                        if( $level['id'] == $lid ) {
+                            $level_title = $level['title'];
+                            break;
+                        }
+                    }
+
+                    $description = $school_title.' - '.$faculty_title.' - '.$level_title;
                     // Getting command type
                     $ct_repository = $this->getDoctrine()->getRepository('DellaertACCOBooklistBundle:CommandType');
                     $command_type = $ct_repository->FindById($cid);
