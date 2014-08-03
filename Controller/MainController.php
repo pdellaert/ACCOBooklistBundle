@@ -116,7 +116,8 @@ class MainController extends Controller
                         ->setSchool($scid)
                         ->setFaculty($fid)
                         ->setLevel($lid)
-                        ->setCommandType($command_type);
+                        ->setCommandType($command_type)
+                        ->setCreatedAt(new \DateTime());
 
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($scheduled_command);
@@ -132,8 +133,8 @@ class MainController extends Controller
             }
         }
 
-        $queued_sheduled_commands = $sc_repository->findBy(array('executed'=>false), array('finishedAt'=>'DESC'));
-        $completed_sheduled_commands = $sc_repository->findBy(array('executed'=>true),array('createdAt'=>'ASC'));
+        $queued_sheduled_commands = $sc_repository->findBy(array('executed'=>false), array('createdAt'=>'ASC'));
+        $completed_sheduled_commands = $sc_repository->findBy(array('executed'=>true),array('finishedAt'=>'DESC'));
 
         return $this->render('DellaertACCOBooklistBundle:Main:command-schedule.html.twig',array('form'=>$form->createView(),'queued_sheduled_commands'=>$queued_sheduled_commands,'completed_sheduled_commands'=>$completed_sheduled_commands,'message'=>$message,'cid'=>$cid,'scid'=>$scid,'fid'=>$fid,'lid'=>$lid));
     }
