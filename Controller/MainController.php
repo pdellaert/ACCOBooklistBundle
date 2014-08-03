@@ -133,10 +133,10 @@ class MainController extends Controller
             }
         }
 
-        $queued_sheduled_commands = $sc_repository->findBy(array('executed'=>false), array('createdAt'=>'ASC'));
-        $completed_sheduled_commands = $sc_repository->findBy(array('executed'=>true),array('finishedAt'=>'DESC'));
+        $queued_scheduled_commands = $sc_repository->findBy(array('executed'=>false), array('createdAt'=>'ASC'));
+        $completed_scheduled_commands = $sc_repository->findBy(array('executed'=>true),array('finishedAt'=>'DESC'));
 
-        return $this->render('DellaertACCOBooklistBundle:Main:command-schedule.html.twig',array('form'=>$form->createView(),'queued_sheduled_commands'=>$queued_sheduled_commands,'completed_sheduled_commands'=>$completed_sheduled_commands,'message'=>$message,'cid'=>$cid,'scid'=>$scid,'fid'=>$fid,'lid'=>$lid));
+        return $this->render('DellaertACCOBooklistBundle:Main:command-schedule.html.twig',array('form'=>$form->createView(),'queued_scheduled_commands'=>$queued_scheduled_commands,'completed_scheduled_commands'=>$completed_scheduled_commands,'message'=>$message,'cid'=>$cid,'scid'=>$scid,'fid'=>$fid,'lid'=>$lid));
     }
 
     public function courseMaterialOverviewAction() {

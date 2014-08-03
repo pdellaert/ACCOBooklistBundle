@@ -43,7 +43,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			{% for sc in queued_sheduled_commands %}
+			{% for sc in queued_scheduled_commands %}
 				<tr>
 					<td>{{ sc.createdAt }}</td>
 					<td>{{ sc.description }}</td>
@@ -65,7 +65,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			{% for sc in queued_sheduled_commands %}
+			{% for sc in completed_scheduled_commands %}
 				<tr>
 					<td>{{ sc.finishedAt }}</td>
 					<td>{{ sc.description }}</td>
