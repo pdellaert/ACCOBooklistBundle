@@ -23,7 +23,7 @@ class CommandType
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=512, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank()
      *
      * @var string
@@ -31,7 +31,7 @@ class CommandType
     protected $command;
 
     /**
-     * @ORM\Column(type="string", length=512, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank()
      *
      * @var string
@@ -49,5 +49,94 @@ class CommandType
     public function __construct()
     {
         $this->sheduledCommands = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set command
+     *
+     * @param string $command
+     * @return CommandType
+     */
+    public function setCommand($command)
+    {
+        $this->command = $command;
+
+        return $this;
+    }
+
+    /**
+     * Get command
+     *
+     * @return string 
+     */
+    public function getCommand()
+    {
+        return $this->command;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return CommandType
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Add sheduledCommands
+     *
+     * @param \Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand $sheduledCommands
+     * @return CommandType
+     */
+    public function addSheduledCommand(\Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand $sheduledCommands)
+    {
+        $this->sheduledCommands[] = $sheduledCommands;
+
+        return $this;
+    }
+
+    /**
+     * Remove sheduledCommands
+     *
+     * @param \Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand $sheduledCommands
+     */
+    public function removeSheduledCommand(\Dellaert\ACCOBooklistBundle\Entity\ScheduledCommand $sheduledCommands)
+    {
+        $this->sheduledCommands->removeElement($sheduledCommands);
+    }
+
+    /**
+     * Get sheduledCommands
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSheduledCommands()
+    {
+        return $this->sheduledCommands;
     }
 }
