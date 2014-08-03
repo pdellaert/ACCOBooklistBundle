@@ -45,7 +45,7 @@
 			<tbody>
 			{% for sc in queued_scheduled_commands %}
 				<tr>
-					<td>{{ sc.createdAt }}</td>
+					<td>{{ sc.createdAt|date('Y-m-d H:i') }}</td>
 					<td>{{ sc.description }}</td>
 					<td>{{ sc.commandType.description }}</td>
 				</tr>
@@ -67,7 +67,7 @@
 			<tbody>
 			{% for sc in completed_scheduled_commands %}
 				<tr>
-					<td>{{ sc.finishedAt }}</td>
+					<td>{{ sc.finishedAt|date('Y-m-d H:i') }}</td>
 					<td>{{ sc.description }}</td>
 					<td>{{ sc.commandType.description }}</td>
 					<td><a href="/data/{{ sc.result }}" target="_blank">Download</a></td>
