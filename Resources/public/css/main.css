@@ -211,6 +211,112 @@ Background gradients are completely unnecessary but a neat effect.
 	-moz-border-radius-bottomright:2px;
 	-webkit-border-bottom-right-radius:2px; /* Saf3-4 */
 }
+	
+#command_queue th, #command_queue td {padding:8px 16px 8px; text-align:left; }
+	
+#command_queue th {padding-top:8px; text-shadow: 1px 1px 1px #fff; background:#e8eaeb;}
+
+#command_queue th.right {text-align: right;}
+	
+#command_queue td {border-top:1px solid #e0e0e0; border-right:1px solid #e0e0e0;}
+
+#command_queue td.textright, #command_queue th.textright {text-align: right}
+	
+#command_queue tr.odd-row td {background:#f6f6f6;}
+	
+#command_queue td.last {border-right:none;}
+	
+/*
+Background gradients are completely unnecessary but a neat effect.
+*/
+	
+#command_queue td {
+	background: -moz-linear-gradient(100% 25% 90deg, #fefefe, #f9f9f9);
+	background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f9f9f9), to(#fefefe));
+}
+	
+#command_queue tr.odd-row td {
+	background: -moz-linear-gradient(100% 25% 90deg, #f6f6f6, #f1f1f1);
+	background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f1f1f1), to(#f6f6f6));
+}
+	
+#command_queue th {
+	background: -moz-linear-gradient(100% 20% 90deg, #e8eaeb, #ededed);
+	background: -webkit-gradient(linear, 0% 0%, 0% 20%, from(#ededed), to(#e8eaeb));
+}
+	
+#command_queue tr:first-child th.first {
+	-moz-border-radius-topleft:2px;
+	-webkit-border-top-left-radius:2px; /* Saf3-4 */
+}
+	
+#command_queue tr:first-child th.last {
+	-moz-border-radius-topright:2px;
+	-webkit-border-top-right-radius:2px; /* Saf3-4 */
+}
+	
+#command_queue tr:last-child td.first {
+	-moz-border-radius-bottomleft:2px;
+	-webkit-border-bottom-left-radius:2px; /* Saf3-4 */
+}
+	
+#command_queue tr:last-child td.last {
+	-moz-border-radius-bottomright:2px;
+	-webkit-border-bottom-right-radius:2px; /* Saf3-4 */
+}
+	
+#command_results th, #command_results td {padding:8px 16px 8px; text-align:left; }
+	
+#command_results th {padding-top:8px; text-shadow: 1px 1px 1px #fff; background:#e8eaeb;}
+
+#command_results th.right {text-align: right;}
+	
+#command_results td {border-top:1px solid #e0e0e0; border-right:1px solid #e0e0e0;}
+
+#command_results td.textright, #command_results th.textright {text-align: right}
+	
+#command_results tr.odd-row td {background:#f6f6f6;}
+	
+#command_results td.last {border-right:none;}
+	
+/*
+Background gradients are completely unnecessary but a neat effect.
+*/
+	
+#command_results td {
+	background: -moz-linear-gradient(100% 25% 90deg, #fefefe, #f9f9f9);
+	background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f9f9f9), to(#fefefe));
+}
+	
+#command_results tr.odd-row td {
+	background: -moz-linear-gradient(100% 25% 90deg, #f6f6f6, #f1f1f1);
+	background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f1f1f1), to(#f6f6f6));
+}
+	
+#command_results th {
+	background: -moz-linear-gradient(100% 20% 90deg, #e8eaeb, #ededed);
+	background: -webkit-gradient(linear, 0% 0%, 0% 20%, from(#ededed), to(#e8eaeb));
+}
+	
+#command_results tr:first-child th.first {
+	-moz-border-radius-topleft:2px;
+	-webkit-border-top-left-radius:2px; /* Saf3-4 */
+}
+	
+#command_results tr:first-child th.last {
+	-moz-border-radius-topright:2px;
+	-webkit-border-top-right-radius:2px; /* Saf3-4 */
+}
+	
+#command_results tr:last-child td.first {
+	-moz-border-radius-bottomleft:2px;
+	-webkit-border-bottom-left-radius:2px; /* Saf3-4 */
+}
+	
+#command_results tr:last-child td.last {
+	-moz-border-radius-bottomright:2px;
+	-webkit-border-bottom-right-radius:2px; /* Saf3-4 */
+}
 
 /* Courses
 ------------------------------------------------ */
