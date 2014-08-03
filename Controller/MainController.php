@@ -107,7 +107,7 @@ class MainController extends Controller
                     $description = $school_title.' - '.$faculty_title.' - '.$level_title;
                     // Getting command type
                     $ct_repository = $this->getDoctrine()->getRepository('DellaertACCOBooklistBundle:CommandType');
-                    $command_type = $ct_repository->FindById($cid);
+                    $command_type = $ct_repository->FindOneById($cid);
 
                     $scheduled_command = new ScheduledCommand();
                     $scheduled_command
