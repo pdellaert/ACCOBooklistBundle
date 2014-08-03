@@ -82,13 +82,7 @@ class MainController extends Controller
                 $levels = ACCOUtility::getLiveLevelsByIdTitle($this->container,$locale,$scid,$fid);
 
                 if( !empty($schools) && !empty($faculties) && !empty($levels) ) {
-                    $school_title = '';
-                    foreach( $schools as $school ) {
-                        if( $school['id'] == $scid ) {
-                            $school_title = $school['title'];
-                            break;
-                        }
-                    }
+                    $school_title = $schools[$scid];
                     $faculty_title = '';
                     foreach( $faculties as $faculty ) {
                         if( $faculty['id'] == $fid ) {
