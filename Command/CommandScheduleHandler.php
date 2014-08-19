@@ -42,7 +42,7 @@ class CommandScheduleHandler extends Command
             $current_command_type = $current_command->getCommandType();
 
             // Generating the filename
-            $filename = date('Ymd_Hi_').preg_replace('/\s/','',trim($current_command->getDescription())).'.xlsx';
+            $filename = $this->safe_filename(date('Ymd_Hi_').preg_replace('/\s/','',trim($current_command->getDescription())).'.xlsx');
 
             // Generating the command
             $search = array('/%SCID%/','/%FID%/','/%LID%/','/%FILE%/');
@@ -68,5 +68,17 @@ class CommandScheduleHandler extends Command
                 $em->flush();
             }
         }
+    }
+
+    protected function safe_filename($filename) {
+            // Convert spaces to dashes
+            $filename = preg_replace('/ /', '-', $filename);
+            // Remove unsafe characters
+            $filename = preg_replace('/[^A-Z0-9-_]/i', '', $filename);
+            // Remove duplicate dashes
+            $filename = preg_replace('/-+/', '-', $filename);
+            // Make lowercase
+            $filename = mb_strtolower($filename);
+            return $filename;
     }
 }
