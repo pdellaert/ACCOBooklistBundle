@@ -42,7 +42,7 @@ class CommandScheduleHandler extends Command
             $current_command_type = $current_command->getCommandType();
 
             // Generating the filename
-            $filename = $this->safe_filename(date('Ymd_Hi_').preg_replace('/\s/','',trim($current_command->getDescription())).'.xlsx');
+            $filename = $this->safe_filename(date('Ymd_Hi_').trim($current_command->getDescription())).'.xlsx';
 
             // Generating the command
             $search = array('/%SCID%/','/%FID%/','/%LID%/','/%FILE%/');
